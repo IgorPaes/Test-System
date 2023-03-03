@@ -2,18 +2,28 @@ package projetoPi;
 
 import java.util.Scanner;
 
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
 
-		Scanner sc = new Scanner(System.in);
-		Scanner nm = new Scanner(System.in);
+
 		System.out.println("Projeto: System Fill");
 
 		System.out.println();
 
 		System.out.println("|**************Ben vindo Jogador****************|");
 
+		String nomePersonagem = escolherPersonagem();
+		
+		System.out.println(nomePersonagem);
+
+	}
+	
+	
+	static String escolherPersonagem() {
+		Scanner sc = new Scanner(System.in);
+		Scanner nm = new Scanner(System.in);
+		
 		System.out.println();
 
 		System.out.println("+------------------------------------------------+");
@@ -25,7 +35,7 @@ public class main {
 
 		System.out.println();
 		System.out.print("Digite sua opação: ");
-		String nomePersonagem;
+		String nomePersonagem = "";
 		int opcao = sc.nextInt();
 
 		while (opcao > 4) {
@@ -37,23 +47,23 @@ public class main {
 		switch (opcao) {
 
 		case 1:
-			System.out.println("Andre");
+			nomePersonagem = "Andre";
 			break;
 		case 2:
 			System.out.println("Digite o nome do seu personagem:");
 
 			nomePersonagem = nm.nextLine();
-			System.out.println(nomePersonagem);
+			
 			break;
 		case 3:
-			System.out.println("Ygor");
+			nomePersonagem = "Ygor";
 			break;
 		case 4:
-			System.out.println("Gui");
+			nomePersonagem = "Gui";
 			break;
 
 		}
-
+		
+		return nomePersonagem;
 	}
-
 }
