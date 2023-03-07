@@ -6,36 +6,25 @@ public class Main {
 
 	public static void main(String[] args) {
 
-
-		System.out.println("Projeto: System Fill");
-
-		System.out.println();
-
-		System.out.println("|**************Ben vindo Jogador****************|");
-
-		String nomePersonagem = escolherPersonagem();
-		
-		System.out.println(nomePersonagem);
-
-	}
-	
-	
-	static String escolherPersonagem() {
 		Scanner sc = new Scanner(System.in);
 		Scanner nm = new Scanner(System.in);
-		
+		System.out.println( "-------------Projeto: System Fill----------------");
+		String criadores = "Andre,Erike,Guilherme,Igor,Thomaz";
+		System.out.println();
+
+		System.out.println("|**************Bem vindo Jogador****************|");
+
 		System.out.println();
 
 		System.out.println("+------------------------------------------------+");
-		System.out.println("|                 Escolha opção 1                  |");
-		System.out.println("|                 Escolha opção 2                  |");
-		System.out.println("|                 Escolha opção 3                  |");
-		System.out.println("|                 Escolha opção 4                  |");
+		System.out.println("|                 Escolha opção 1 Jogar          |");
+		System.out.println("|                 Escolha opção 2 Instruções     |");
+		System.out.println("|                 Escolha opção 3 Criadores      |");
 		System.out.println("+------------------------------------------------+");
 
 		System.out.println();
-		System.out.print("Digite sua opação: ");
-		String nomePersonagem = "";
+		System.out.print("Digite sua opção: ");
+		String nomePersonagem;
 		int opcao = sc.nextInt();
 
 		while (opcao > 4) {
@@ -47,23 +36,31 @@ public class Main {
 		switch (opcao) {
 
 		case 1:
-			nomePersonagem = "Andre";
+			System.out.println("Digite o nome do seu personagem:");
+			nomePersonagem = nm.nextLine();
+			System.out.println(nomePersonagem);
 			break;
 		case 2:
-			System.out.println("Digite o nome do seu personagem:");
-
-			nomePersonagem = nm.nextLine();
+			
+		   System.out.println("Instruções");
 			
 			break;
 		case 3:
-			nomePersonagem = "Ygor";
+			System.out.println("***** Criadores *****");
+			
+			String [] vect = criadores.split(",");
+			
+			System.out.println("- " + vect[0]);
+			System.out.println("- " + vect[1]);
+			System.out.println("- " + vect[2]);
+			System.out.println("- " + vect[3]);
+			System.out.println("- " + vect[4]);
+			
 			break;
-		case 4:
-			nomePersonagem = "Gui";
-			break;
+		
 
 		}
-		
-		return nomePersonagem;
+
 	}
+
 }
