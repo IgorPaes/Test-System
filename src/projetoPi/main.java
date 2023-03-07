@@ -2,7 +2,7 @@ package projetoPi;
 
 import java.util.Scanner;
 
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
 
@@ -19,7 +19,7 @@ public class main {
 		System.out.println("+-----------------------------------------------+");
 		System.out.println("|                 ( 1 ) Iniciar                 |");
 		System.out.println("|                 ( 2 ) Tutorial                |");
-		System.out.println("|                 ( 3 ) Itens                   |");
+		System.out.println("|                 ( 3 ) Reiniciar               |");
 		System.out.println("|                 ( 4 ) Creditos                |");
 		System.out.println("+-----------------------------------------------+");
 
