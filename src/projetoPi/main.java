@@ -8,8 +8,9 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 		Scanner nm = new Scanner(System.in);
-		System.out.println( "-------------Projeto: System Fill----------------");
 		String criadores = "Andre,Erike,Guilherme,Igor,Thomaz";
+		System.out.println( "-------------Projeto: System Fill----------------");
+		
 		System.out.println();
 
 		System.out.println("|**************BEM VINDO JOGADOR!****************|");
@@ -19,8 +20,7 @@ public class Main {
 		System.out.println("+-----------------------------------------------+");
 		System.out.println("|                 ( 1 ) Iniciar                 |");
 		System.out.println("|                 ( 2 ) Tutorial                |");
-		System.out.println("|                 ( 3 ) Reiniciar               |");
-		System.out.println("|                 ( 4 ) Creditos                |");
+		System.out.println("|                 ( 3 ) Creditos                |");
 		System.out.println("+-----------------------------------------------+");
 
 		System.out.println();
