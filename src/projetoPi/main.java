@@ -14,7 +14,7 @@ public class Main {
 
 		System.out.println("|**************BEM VINDO JOGADOR!****************|");
 
-		System.out.println();
+		System.out.println("Teste");
 
 		System.out.println("+-----------------------------------------------+");
 		System.out.println("|                 ( 1 ) Iniciar                 |");
