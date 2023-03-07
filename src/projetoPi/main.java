@@ -2,25 +2,25 @@ package projetoPi;
 
 import java.util.Scanner;
 
-public class Main {
+public class main {
 
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
 		Scanner nm = new Scanner(System.in);
-		System.out.println( "-------------Projeto: System Fill----------------");
 		String criadores = "Andre,Erike,Guilherme,Igor,Thomaz";
+		System.out.println( "-------------Projeto: System Fill----------------");
+		
 		System.out.println();
 
 		System.out.println("|**************BEM VINDO JOGADOR!****************|");
 
-		System.out.println("Teste");
+		System.out.println();
 
 		System.out.println("+-----------------------------------------------+");
 		System.out.println("|                 ( 1 ) Iniciar                 |");
 		System.out.println("|                 ( 2 ) Tutorial                |");
-		System.out.println("|                 ( 3 ) Itens                   |");
-		System.out.println("|                 ( 4 ) Creditos                |");
+		System.out.println("|                 ( 3 ) Creditos                |");
 		System.out.println("+-----------------------------------------------+");
 
 		System.out.println();
