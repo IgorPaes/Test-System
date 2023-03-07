@@ -2,7 +2,7 @@ package projetoPi;
 
 import java.util.Scanner;
 
-public class Main {
+public class main {
 
 	public static void main(String[] args) {
 
@@ -12,24 +12,25 @@ public class Main {
 		String criadores = "Andre,Erike,Guilherme,Igor,Thomaz";
 		System.out.println();
 
-		System.out.println("|**************Bem vindo Jogador****************|");
+		System.out.println("|**************BEM VINDO JOGADOR!****************|");
 
 		System.out.println();
 
-		System.out.println("+------------------------------------------------+");
-		System.out.println("|                 Escolha opção 1 Jogar          |");
-		System.out.println("|                 Escolha opção 2 Instruções     |");
-		System.out.println("|                 Escolha opção 3 Criadores      |");
-		System.out.println("+------------------------------------------------+");
+		System.out.println("+-----------------------------------------------+");
+		System.out.println("|                 ( 1 ) Iniciar                 |");
+		System.out.println("|                 ( 2 ) Tutorial                |");
+		System.out.println("|                 ( 3 ) Itens                   |");
+		System.out.println("|                 ( 4 ) Creditos                |");
+		System.out.println("+-----------------------------------------------+");
 
 		System.out.println();
-		System.out.print("Digite sua opção: ");
+		System.out.print("Digite o nÃºmero da opÃ§Ã£o escolhida: ");
 		String nomePersonagem;
 		int opcao = sc.nextInt();
 
 		while (opcao > 4) {
 
-			System.out.println("Digite a opção entre 1 e 4 corretamente:");
+			System.out.println("Digite a opÃ§Ã£o entre 1 e 4 corretamente:");
 
 			opcao = sc.nextInt();
 		}
@@ -42,7 +43,7 @@ public class Main {
 			break;
 		case 2:
 			
-		   System.out.println("Instruções");
+		   System.out.println("InstruÃ§Ãµes");
 			
 			break;
 		case 3:
