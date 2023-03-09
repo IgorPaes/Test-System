@@ -1,8 +1,6 @@
 package projetoPi;
 
 import java.util.Scanner;
-
-
 public class main {
 
 	public static void main(String[] args) {
@@ -12,7 +10,7 @@ public class main {
 		Scanner sn = new Scanner(System.in);
 		String nomePersonagem;
 		String criadores = "Andre,Erike,Guilherme,Igor,Thomaz";
-
+		
 		System.out.println();
 		System.out.println( "------------- Projeto: System Fill ----------------");
 		
@@ -42,6 +40,8 @@ public class main {
 		switch (opcao) {
 
 		case 1:
+
+			// FUNÇÃO NOME DO PERSONAGEM
 			System.out.printf("Digite o nome do seu personagem: ");
 			nomePersonagem = nm.nextLine();
 
@@ -63,10 +63,22 @@ public class main {
 				System.out.printf("Nome %s adicionado ao novo personagem.", nomePersonagem);
 				System.out.println(" ");
 			}
+			// --------------------------------------------------------------------------------
+
+			// HISTÓRIA
+
+			System.out.println("Olá, bem vindo a fase 1, você iniciará com 100 pontos de vida, atenção caso sua vida chegue em 0 voçê perde o jogo.");
+
+
+
+
 			break;
 		case 2:
-		   System.out.println("Instruções");
+			System.out.println("--------------------------------------------");
+			System.out.println("---------------- INSTRUÇÕES ----------------");
+			System.out.println("--------------------------------------------");
 			
+			System.out.println("O jogo consiste...");
 			break;
 		case 3:
 			System.out.println("***** Criadores *****");
@@ -80,8 +92,6 @@ public class main {
 			System.out.println("- " + vect[4]);
 			
 			break;
-		
-
 		}
 
 	}
