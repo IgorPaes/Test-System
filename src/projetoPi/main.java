@@ -1,19 +1,22 @@
 package projetoPi;
 
 import java.util.Scanner;
-
-public class Main {
+public class main {
 
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
 		Scanner nm = new Scanner(System.in);
+		Scanner sn = new Scanner(System.in);
+		String nomePersonagem;
 		String criadores = "Andre,Erike,Guilherme,Igor,Thomaz";
-		System.out.println( "-------------Projeto: System Fill----------------");
+		
+		System.out.println();
+		System.out.println( "------------- Projeto: System Fill ----------------");
 		
 		System.out.println();
 
-		System.out.println("|**************BEM VINDO JOGADOR!****************|");
+		System.out.println("|************** BEM VINDO JOGADOR! ****************|");
 
 		System.out.println();
 
@@ -25,7 +28,6 @@ public class Main {
 
 		System.out.println();
 		System.out.print("Digite o número da opção escolhida: ");
-		String nomePersonagem;
 		int opcao = sc.nextInt();
 
 		while (opcao > 4) {
@@ -34,17 +36,49 @@ public class Main {
 
 			opcao = sc.nextInt();
 		}
+		
 		switch (opcao) {
 
 		case 1:
-			System.out.println("Digite o nome do seu personagem:");
+
+			// FUNÇÃO NOME DO PERSONAGEM
+			System.out.printf("Digite o nome do seu personagem: ");
 			nomePersonagem = nm.nextLine();
-			System.out.println(nomePersonagem);
+
+			System.out.println("Você deseja que seu nome seja " + nomePersonagem + "?");
+
+			System.out.printf("[Digite SIM OU NÃO]: ");
+			String simOuNao = sn.nextLine().toUpperCase();
+
+			while (simOuNao.equalsIgnoreCase( "NÃO") || simOuNao.equalsIgnoreCase( "N")) {
+				
+				System.out.printf("Digite o nome do seu personagem então: ");
+				nomePersonagem = nm.nextLine();
+				System.out.println("Você deseja que seu nome seja " + nomePersonagem + "?");
+				System.out.printf("[Digite SIM OU NÃO]: ");
+				simOuNao = sn.nextLine().toUpperCase();
+				
+			}
+			if (simOuNao.equalsIgnoreCase("SIM")|| simOuNao.equalsIgnoreCase("S")){
+				System.out.printf("Nome %s adicionado ao novo personagem.", nomePersonagem);
+				System.out.println(" ");
+			}
+			// --------------------------------------------------------------------------------
+
+			// HISTÓRIA
+
+			System.out.println("Olá, bem vindo a fase 1, você iniciará com 100 pontos de vida, atenção caso sua vida chegue em 0 voçê perde o jogo.");
+
+
+
+
 			break;
 		case 2:
+			System.out.println("--------------------------------------------");
+			System.out.println("---------------- INSTRUÇÕES ----------------");
+			System.out.println("--------------------------------------------");
 			
-		   System.out.println("Instruções");
-			
+			System.out.println("O jogo consiste...");
 			break;
 		case 3:
 			System.out.println("***** Criadores *****");
@@ -58,8 +92,6 @@ public class Main {
 			System.out.println("- " + vect[4]);
 			
 			break;
-		
-
 		}
 
 	}
