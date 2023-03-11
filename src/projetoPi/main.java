@@ -5,7 +5,7 @@ import java.util.Scanner;
 import entities.Personagens;
 import vilao.Vilao;
 
-public class Main {
+public class main {
 
 	public static void main(String[] args) {
 
@@ -32,13 +32,13 @@ public class Main {
 		System.out.println("+-----------------------------------------------+");
 
 		System.out.println();
-		System.out.print("Digite o numero da opção escolhida: ");
+		System.out.print("Digite o numero da opï¿½ï¿½o escolhida: ");
 		// String nomePersonagem;
 		int opcao = sc.nextInt();
 
 		while (opcao >= 4) {
 
-			System.out.println("Digite a opção entre 1 e 3 corretamente:");
+			System.out.println("Digite a opï¿½ï¿½o entre 1 e 3 corretamente:");
 
 			opcao = sc.nextInt();
 		}
@@ -53,7 +53,7 @@ public class Main {
 
 			System.out.println(personagem.toString());
 			System.out.println();
-			System.out.println("Quem é seu vilão ?");
+			System.out.println("Quem ï¿½ seu vilï¿½o ?");
 			System.out.println();
 			vilao.vilao=vi.nextLine();
 			/*
@@ -61,7 +61,7 @@ public class Main {
 			 * 
 			 * System.out.println("1- " + vect[0]); System.out.println("2- " + vect[1]);
 			 * System.out.println("3- " + vect[2]); System.out.println();
-			 * System.out.println("Digite a sua opção:"); vilao.vilao = vi.nextInt();
+			 * System.out.println("Digite a sua opï¿½ï¿½o:"); vilao.vilao = vi.nextInt();
 			 */
 			
 			System.out.println(vilao.toString());
