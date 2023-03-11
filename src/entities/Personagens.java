@@ -8,7 +8,7 @@ public class Personagens {
 	public String  poder;
 	
 	
-	Main personagem = new Main();
+	
 	
 public String toString() {
 	return name
