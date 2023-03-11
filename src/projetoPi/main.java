@@ -11,9 +11,8 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 		Scanner ps = new Scanner(System.in);
-		Scanner vi = new Scanner(System.in);
-		Vilao vilao = new Vilao();
-		Personagens personagem = new Personagens();
+	
+	
 
 		String criadores = "Andre,Erike,Guilherme,Igor,Thomaz";
 
@@ -32,13 +31,13 @@ public class Main {
 		System.out.println("+-----------------------------------------------+");
 
 		System.out.println();
-		System.out.print("Digite o numero da opção escolhida: ");
+		System.out.print("Digite o numero da opÃ§Ã£o escolhida: ");
 		// String nomePersonagem;
 		int opcao = sc.nextInt();
 
 		while (opcao >= 4) {
 
-			System.out.println("Digite a opção entre 1 e 3 corretamente:");
+			System.out.println("Digite a opÃ§ao entre 1 e 3 corretamente:");
 
 			opcao = sc.nextInt();
 		}
@@ -46,25 +45,19 @@ public class Main {
 
 		case 1:
 			System.out.println("Digite o nome do seu personagem:");
-			personagem.name = ps.nextLine();
+			
 			System.out.println("Digite o poder do seu personagem:");
 			// System.out.println(personagem.name);
-			personagem.poder = ps.nextLine();
-
-			System.out.println(personagem.toString());
-			System.out.println();
-			System.out.println("Quem é seu vilão ?");
-			System.out.println();
-			vilao.vilao=vi.nextLine();
-			/*
-			 * String[] vect = vilao.viloes.split(",");
-			 * 
-			 * System.out.println("1- " + vect[0]); System.out.println("2- " + vect[1]);
-			 * System.out.println("3- " + vect[2]); System.out.println();
-			 * System.out.println("Digite a sua opção:"); vilao.vilao = vi.nextInt();
-			 */
 			
-			System.out.println(vilao.toString());
+
+			
+			System.out.println();
+			System.out.println("Quem Ã© seu vilÃ£o ?");
+			System.out.println();
+			
+			
+			
+			
 			
 			
 			
