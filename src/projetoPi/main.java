@@ -2,17 +2,16 @@ package projetoPi;
 
 import java.util.Scanner;
 
-
-
 public class Main {
 
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
 		Scanner ps = new Scanner(System.in);
+		Scanner pdr = new Scanner(System.in);
 	
-	
-
+	int personagem;
+     String poder;
 		String criadores = "Andre,Erike,Guilherme,Igor,Thomaz";
 
 		System.out.println("-------------Projeto: System Fill----------------");
@@ -33,8 +32,6 @@ public class Main {
 
 		System.out.print("Digite o numero da opção escolhida: ");
 
-		System.out.print("Digite o numero da op��o escolhida: ");
-
 		// String nomePersonagem;
 		int opcao = sc.nextInt();
 
@@ -43,7 +40,6 @@ public class Main {
 
 			System.out.println("Digite a opçao entre 1 e 3 corretamente:");
 
-			System.out.println("Digite a op��o entre 1 e 3 corretamente:");
 
 
 			opcao = sc.nextInt();
@@ -51,34 +47,42 @@ public class Main {
 		switch (opcao) {
 
 		case 1:
-			System.out.println("Digite o nome do seu personagem:");
+			System.out.println("Escolha um dos personagens:");
+			System.out.println();
+			System.out.println("1-Seya");
+			System.out.println("2-Shun");
+			System.out.println("3-Ikki");
+			System.out.println("4-Shiryu");
 			
-			System.out.println("Digite o poder do seu personagem:");
-			// System.out.println(personagem.name);
+			
+			personagem = ps.nextInt();
+			
+			while (personagem >=5) {
 
-			System.out.println();
-			System.out.println("Quem � seu vil�o ?");
-			System.out.println();
-			
-			/*
-			 * String[] vect = vilao.viloes.split(",");
-			 * 
-			 * System.out.println("1- " + vect[0]); System.out.println("2- " + vect[1]);
-			 * System.out.println("3- " + vect[2]); System.out.println();
-			 * System.out.println("Digite a sua op��o:"); vilao.vilao = vi.nextInt();
-			 */
 
-			
+				System.out.println("Opção invalida, escolha uma opção entre 1 e 4");
+				System.out.println("1-Seya");
+				System.out.println("2-Shun");
+				System.out.println("3-Ikki");
+				System.out.println("4-Shiryu");
 
+
+				personagem = sc.nextInt();
+			}
 			
-			System.out.println();
-			System.out.println("Quem é seu vilão ?");
-			System.out.println();
+			if (personagem == 1) {
+				System.out.println("Seya de Pégaso");
+			}
+			else if (personagem == 2) {
+				System.out.println("Shun de Adromeda");
+			}
 			
-			
-			
-			
-			
+			else if (personagem == 3) {
+				System.out.println("Ikki de Fenix");
+			}
+			else if (personagem == 4) {
+				System.out.println("Shiryu de Dragão");
+			}
 			
 			
 			System.out.println();
