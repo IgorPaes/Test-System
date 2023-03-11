@@ -25,26 +25,28 @@ public class Main {
 		System.out.println("+-----------------------------------------------+");
 		System.out.println("|                 ( 1 ) Iniciar                 |");
 		System.out.println("|                 ( 2 ) Tutorial                |");
-		System.out.println("|                 ( 3 ) Creditos                |");
+		System.out.println("|                 ( 3 ) Criadores               |");
 		System.out.println("+-----------------------------------------------+");
 
 		System.out.println();
-		System.out.print("Digite o nÃºmero da opÃ§Ã£o escolhida: ");
+		System.out.print("Digite o numero da opção escolhida: ");
 		//String nomePersonagem;
 		int opcao = sc.nextInt();
 
-		while (opcao > 4) {
+		while (opcao >= 4) {
 
-			System.out.println("Digite a opÃ§Ã£o entre 1 e 4 corretamente:");
+			System.out.println("Digite a opção entre 1 e 3 corretamente:");
 
 			opcao = sc.nextInt();
 		}
 		switch (opcao) {
 
 		case 1:
-			System.out.println("Digite o nome do seu personagem");
+			System.out.println("Digite o nome do seu personagem:");
 			personagem.name = ps.nextLine();
+			System.out.println("Digite o poder do seu personagem:");
 			//System.out.println(personagem.name);
+			personagem.poder = ps.nextLine();
 			System.out.println(personagem.toString());
 			break;
 		case 2:
