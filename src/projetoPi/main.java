@@ -2,7 +2,13 @@ package projetoPi;
 
 import java.util.Scanner;
 
+<<<<<<< HEAD
 public class Main {
+=======
+
+
+public class main {
+>>>>>>> ea6a72a209616bd0cb5b14f6fa633b95a6dec066
 
 	public static void main(String[] args) {
 
