@@ -57,7 +57,7 @@ public class Program {
 		
 		System.out.printf("Bom, %s iremos começar a prova e desejo boa sorte *_*\n", nomeAluno);
 		
-		
+		System.out.println(valorNota);
 		
 		sc.close();
 	}
