@@ -1,4 +1,4 @@
-package projetoPi2;
+package projetoPI;
 
 import java.util.Scanner;
 
