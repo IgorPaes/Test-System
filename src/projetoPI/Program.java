@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Program {
 
 	static double valorNota;
-	static double[] notasQuestoes;
+	static double[] notasQuestoes = new double[10];
  
 	public static void entradaDoUsuario(char tipoDeUsuario) {
 
@@ -15,12 +15,18 @@ public class Program {
 		
 			case '1':
 
-				System.out.println("Escolha uma das opções a baixo para a edição da prova.\n");
+				char OpcoesEditarProva;
 
-				System.out.println("1) Valor das questões");
-				System.out.println("2) Ordens Aleatórias");
-				System.out.println("3) Número de Tentativas");
-				char OpcoesEditarProva = es.next().charAt(0);
+				do {
+
+					System.out.println("\nEscolha uma das opções a baixo para a edição da prova.\n");
+
+					System.out.println("1) Valor das questões");
+					System.out.println("2) Ordens Aleatórias");
+					System.out.println("3) Número de Tentativas");
+					OpcoesEditarProva = es.next().charAt(0);
+
+				}while(OpcoesEditarProva != '1' && OpcoesEditarProva != '2' && OpcoesEditarProva != '3');
 
 				switch(OpcoesEditarProva) {
 					case '1':
@@ -28,27 +34,30 @@ public class Program {
 						int controle = 0;
 
 						do {
-							System.out.printf("Digite valor da questão %i:", controle + 1);
+							
+							System.out.printf("Digite valor da questão %d: ", controle + 1);
 							notasQuestoes[controle] = es.nextDouble();
-	
+
 							controle++;
-						}while(controle >= notasQuestoes.length);
+						}while(controle < notasQuestoes.length);
 
 					break;
+
 					case '2':
 
-
+						System.out.println("2");
 
 					break;
+					
 					case '3':
 
-
+						System.out.println("3");
 
 					break;
 				}
 
 			break;
-
+						
 			case '2':
 
 				System.out.println("Boa sorte aluno");
