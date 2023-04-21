@@ -14,7 +14,6 @@ public class Program {
 		switch(tipoDeUsuario) { 
 		
 			case '1':
-
 				char OpcoesEditarProva;
 
 				do {
@@ -55,7 +54,6 @@ public class Program {
 
 					break;
 				}
-
 			break;
 						
 			case '2':
@@ -64,12 +62,10 @@ public class Program {
 
 			break;
 
-			default:
-			
-
 		}
 		es.close();
 	}
+
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -95,7 +91,6 @@ public class Program {
 
 		}while(tipoUsuario != '1' && tipoUsuario != '2');
 
-		
 		entradaDoUsuario(tipoUsuario);
 
 		// valorNota =  0;
