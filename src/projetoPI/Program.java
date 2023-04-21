@@ -19,7 +19,7 @@ public class Program {
 
 				do {
 
-					System.out.println("\nEscolha uma das opções a baixo para a edição da prova.\n");
+					System.out.println("\n\nEscolha uma das opções a baixo para a edição da prova.\n");
 
 					System.out.println("1) Valor das questões");
 					System.out.println("2) Ordens Aleatórias");
@@ -97,7 +97,6 @@ public class Program {
 
 		
 		entradaDoUsuario(tipoUsuario);
-
 
 		// valorNota =  0;
 		// double somaNota =+ valorNota;
