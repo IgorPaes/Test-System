@@ -18,11 +18,13 @@ public class Program {
 
 				do {
 
-					System.out.println("\n\nEscolha uma das opções a baixo para a edição da prova.\n");
+					System.out.println("\n\nMENU DE EDIÇÃO DA PROVA!");
+					System.out.println("Escolha uma das opções a baixo para a editar da prova.\n");
 
-					System.out.println("1) Valor das questões");
-					System.out.println("2) Ordens Aleatórias");
-					System.out.println("3) Número de Tentativas");
+					System.out.println("1) Quantidade de questões");
+					System.out.println("2) Valor das questões");
+					System.out.println("3) Ordens Aleatórias");
+					System.out.println("4) Número de Tentativas");
 					OpcoesEditarProva = es.next().charAt(0);
 
 				}while(OpcoesEditarProva != '1' && OpcoesEditarProva != '2' && OpcoesEditarProva != '3');
@@ -30,10 +32,16 @@ public class Program {
 				switch(OpcoesEditarProva) {
 					case '1':
 
+						System.out.println("Digite o número de questões:");
+						System.out.println("Limite: ...");
+
+					break;
+
+					case '2':
+
 						int controle = 0;
 
 						do {
-							
 							System.out.printf("Digite valor da questão %d: ", controle + 1);
 							notasQuestoes[controle] = es.nextDouble();
 
@@ -42,15 +50,15 @@ public class Program {
 
 					break;
 
-					case '2':
+					case '3':
 
-						System.out.println("2");
+						System.out.println("Digite 1 para ativar embaralhamento automático!");
 
 					break;
 					
-					case '3':
+					case '4':
 
-						System.out.println("3");
+						System.out.println("Digite o número de tentativas para refezer a prova!");
 
 					break;
 				}
