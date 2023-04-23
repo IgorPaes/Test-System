@@ -5,16 +5,23 @@ import java.util.Scanner;
 public class Program {
 
 	static double valorNota;
+	static boolean usuario;
 	static double[] notasQuestoes = new double[10];
  
-	public static void entradaDoUsuario(char tipoDeUsuario) {
+	public static void authEntradaDoUsuario(char TipoDeUsuario) {
 
 		Scanner es = new Scanner(System.in);
 
-		switch(tipoDeUsuario) { 
+		switch(TipoDeUsuario) { 
 		
 			case '1':
 				char OpcoesEditarProva;
+				int senhaProfessor;
+
+				System.out.println("Digite a senha para continuar!");
+				senhaProfessor = es.nextInt();
+
+				// TEM QUE FAZER A AUTH DA SENHA E MOVER ESTA PARTE DE BAIXO PARA OUTRO LUGAR.
 
 				do {
 
@@ -66,7 +73,8 @@ public class Program {
 						
 			case '2':
 
-				System.out.println("Boa sorte aluno");
+				// aluno = true;
+				// System.out.println("Boa sorte aluno");
 
 			break;
 
@@ -84,7 +92,7 @@ public class Program {
 
 			System.out.println("+-----------------------------------------------+");
 			System.out.println("|                                               |");
-			System.out.println("|                 SEJA BEM - VINDO              |");
+			System.out.println("|                SEJA BEM - VINDO               |");
 			System.out.println("|                                               |");
 			System.out.println("+-----------------------------------------------+\n");
 			
@@ -99,7 +107,7 @@ public class Program {
 
 		}while(tipoUsuario != '1' && tipoUsuario != '2');
 
-		entradaDoUsuario(tipoUsuario);
+		authEntradaDoUsuario(tipoUsuario);
 
 		// valorNota =  0;
 		// double somaNota =+ valorNota;
