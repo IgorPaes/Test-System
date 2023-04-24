@@ -1,47 +1,54 @@
 package projetoPI;
 
-
 import java.util.Scanner;
 
 public class Program {
 
-	static double valorNota;
-	static boolean usuarioProfessor = false;
-	static boolean usuarioAluno = false;
 	static double[] notasQuestoes = new double[10];
  
-	public static void authEntradaDoUsuario(char TipoDeUsuario) {
+	public static char authEntradaDoUsuario(char TipoDeUsuario) {
 
 		Scanner sc = new Scanner(System.in);
-
+		char UsuarioAutenticado = ' ';
+ 
 		switch(TipoDeUsuario) { 
 		
 			case '1':
-				int senhaProfessor;
+				int senhaProfessor = 123;
+				int senhaProfessorRecebida;
+				int i = 0;
 
-				System.out.println("Digite a senha para continuar!");
-				senhaProfessor = sc.nextInt();
+				do {
+					System.out.println("Digite a senha para continuar!");
+					System.out.println("Senha: 123");
+					senhaProfessorRecebida = sc.nextInt();
 
-				if(senhaProfessor == 123) {
+					if(senhaProfessorRecebida == senhaProfessor) {
 					
-					usuarioProfessor = true;
+						UsuarioAutenticado = '1';
+						i = 3;
+	
+					}else {
+	
+						int calc = 3 - (i + 1);
+						System.out.printf("Senha incorreta, você tem %d tentativas. \n", calc);
+	
+					}
 
-				}else {
-
-					System.out.println("Senha incorreta tente novamente mais tarde!");
-
-				}
+					i++;
+				}while(i < 3);
 
 			break;
 						
 			case '2':
 
-				usuarioAluno = true;
+				UsuarioAutenticado = '2';
 		
 			break;
 
 		}
 		
+		return(UsuarioAutenticado);
 	}
 	
 	public static void main(String[] args) {
@@ -68,13 +75,11 @@ public class Program {
 
 		}while(tipoUsuario != '1' && tipoUsuario != '2');
 
-		authEntradaDoUsuario(tipoUsuario);
-		
 		System.out.print("\033\143");
 
 		char OpcoesEditarProva;
-		
-	if(usuarioProfessor) {
+
+		if(authEntradaDoUsuario(tipoUsuario) == '1') {
 
 			do {
 
