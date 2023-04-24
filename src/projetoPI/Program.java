@@ -131,6 +131,12 @@ public class Program {
 			}
 
 		}
+
+		if(authEntradaDoUsuario(tipoUsuario) == '2') {
+
+
+
+		}
 		sc.close();
 	}
 }
