@@ -1,5 +1,6 @@
 package projetoPI;
 
+
 import java.util.Scanner;
 
 public class Program {
@@ -22,7 +23,7 @@ public class Program {
 				senhaProfessor = sc.nextInt();
 
 				if(senhaProfessor == 123) {
-
+					
 					usuarioProfessor = true;
 
 				}else {
@@ -68,10 +69,12 @@ public class Program {
 		}while(tipoUsuario != '1' && tipoUsuario != '2');
 
 		authEntradaDoUsuario(tipoUsuario);
+		
+		System.out.print("\033\143");
 
 		char OpcoesEditarProva;
-
-		if(usuarioProfessor == true) {
+		
+	if(usuarioProfessor) {
 
 			do {
 
@@ -91,7 +94,8 @@ public class Program {
 				case '1':
 
 					System.out.println("Digite o número de questões:");
-					System.out.println("Limite: ...");
+					System.out.println("Limite Máximo: bloqueado em 20 questões. ");
+					
 
 				break;
 
