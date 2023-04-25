@@ -1,4 +1,4 @@
-package projetoPI;
+package projetoPi;
 
 import java.util.Scanner;
 
@@ -164,7 +164,6 @@ public class Program {
 			System.out.println("A");
 
 		}
-
 
 		sc.close();
 	}
