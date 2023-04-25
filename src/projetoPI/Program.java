@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Program {
 
 	static double[] notasQuestoes = new double[10];
- 
+	static char tipoUsuario;
+
 	public static char authEntradaDoUsuario(char TipoDeUsuario) {
 
 		Scanner sc = new Scanner(System.in);
@@ -47,16 +48,39 @@ public class Program {
 			break;
 
 		}
-		
+
 		return(UsuarioAutenticado);
+	}
+
+	public static char MenuEdicaoProva() {
+
+		Scanner sc = new Scanner(System.in);
+		char OpcoesEditarProva = ' ';
+
+		if(authEntradaDoUsuario(tipoUsuario) == '1') {
+
+			do {
+
+				System.out.println("\n\nMENU DE EDIÇÃO DA PROVA!");
+				System.out.println("Escolha uma das opções a baixo para a editar da prova.\n");
+
+				System.out.println("1) Quantidade de questões");
+				System.out.println("2) Valor das questões");
+				System.out.println("3) Mode de ordens Aleatórias");
+				System.out.println("4) Número de Tentativas");
+
+				OpcoesEditarProva = sc.next().charAt(0);
+
+			}while(OpcoesEditarProva != '1' && OpcoesEditarProva != '2' && OpcoesEditarProva != '3' && OpcoesEditarProva != '4');
+
+		}
+		return OpcoesEditarProva;
 	}
 	
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		char tipoUsuario;
-
 		do {
 
 			System.out.println("+-----------------------------------------------+");
@@ -76,67 +100,48 @@ public class Program {
 		}while(tipoUsuario != '1' && tipoUsuario != '2');
 
 		System.out.print("\033\143");
+		
+		switch(MenuEdicaoProva()) {
+			case '1':
 
-		char OpcoesEditarProva;
+				System.out.println("Digite o número de questões:");
+				System.out.println("Limite Máximo: bloqueado em 20 questões. ");
 
-		if(authEntradaDoUsuario(tipoUsuario) == '1') {
+			break;
 
-			do {
+			case '2':
 
-				System.out.println("\n\nMENU DE EDIÇÃO DA PROVA!");
-				System.out.println("Escolha uma das opções a baixo para a editar da prova.\n");
+				int controle = 0;
 
-				System.out.println("1) Quantidade de questões");
-				System.out.println("2) Valor das questões");
-				System.out.println("3) Mode de ordens Aleatórias");
-				System.out.println("4) Número de Tentativas");
+				do {
+					System.out.printf("Digite valor da questão %d: ", controle + 1);
+					notasQuestoes[controle] = sc.nextDouble();
 
-				OpcoesEditarProva = sc.next().charAt(0);
+					controle++;
+				}while(controle < notasQuestoes.length);
 
-			}while(OpcoesEditarProva != '1' && OpcoesEditarProva != '2' && OpcoesEditarProva != '3' && OpcoesEditarProva != '4');
+			break;
 
-			switch(OpcoesEditarProva) {
-				case '1':
+			case '3':
 
-					System.out.println("Digite o número de questões:");
-					System.out.println("Limite Máximo: bloqueado em 20 questões. ");
-					
+				System.out.println("Digite 1 para ativar embaralhamento automático!");
 
-				break;
+			break;
+			
+			case '4':
 
-				case '2':
+				System.out.println("Digite o número de tentativas para refezer a prova!");
 
-					int controle = 0;
+			break;
+		}
 
-					do {
-						System.out.printf("Digite valor da questão %d: ", controle + 1);
-						notasQuestoes[controle] = sc.nextDouble();
+		if(tipoUsuario == '2' && authEntradaDoUsuario(tipoUsuario) == '2') {
 
-						controle++;
-					}while(controle < notasQuestoes.length);
-
-				break;
-
-				case '3':
-
-					System.out.println("Digite 1 para ativar embaralhamento automático!");
-
-				break;
-				
-				case '4':
-
-					System.out.println("Digite o número de tentativas para refezer a prova!");
-
-				break;
-			}
+			System.out.println("A");
 
 		}
 
-		if(authEntradaDoUsuario(tipoUsuario) == '2') {
 
-
-
-		}
 		sc.close();
 	}
 }
