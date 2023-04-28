@@ -1,11 +1,14 @@
-package projetoPi;
+package projetoPI;
 
 import java.util.Scanner;
 
 public class Program {
 
-	static double[] notasQuestoes = new double[10];
+	static double[] notasQuestoes = new double[4];
 	static char tipoUsuario;
+	static char opcaoMain = ' ';
+
+	static int antiRepeticao = 0;
 
 	public static char authEntradaDoUsuario(char TipoDeUsuario) {
 
@@ -15,36 +18,36 @@ public class Program {
 		switch(TipoDeUsuario) { 
 		
 			case '1':
+
 				int senhaProfessor = 123;
-				int senhaProfessorRecebida;
-				int antiRepeticao = 0;
+				int senhaProfessorRecebida = 0;
 				int i = 0;
 
-				if(antiRepeticao != senhaProfessor) {
+				do {
 
-					do {
+					if(antiRepeticao != senhaProfessor) {
 
 						System.out.println("Digite a senha para continuar!");
 						System.out.println("Senha: 123");
 						senhaProfessorRecebida = sc.nextInt();
 
-						if(senhaProfessorRecebida == senhaProfessor) {
-					
-							UsuarioAutenticado = '1';
-							antiRepeticao = 123;
-							i = 3;
+					}
 
-						}else {
-		
-							int calc = 3 - (i + 1);
-							System.out.printf("Senha incorreta, você tem %d tentativas. \n", calc);
-		
-						}
+					if(senhaProfessorRecebida == senhaProfessor || antiRepeticao == senhaProfessor) {
+				
+						UsuarioAutenticado = '1';
+						antiRepeticao = senhaProfessor;
+						i = 3;
 
-						i++;
-					}while(i < 3);
+					}else {
 
-				}
+						int calc = 3 - (i + 1);
+						System.out.printf("Senha incorreta, você tem %d tentativas. \n", calc);
+
+					}
+
+					i++;
+				}while(i < 3);
 
 			break;
 						
@@ -86,15 +89,15 @@ public class Program {
 	public static void VoltarAoMenuProva() {
 
 		Scanner sc = new Scanner(System.in);
-		char voltar;
+		char voltar = ' ';
 
 		System.out.println("DIGITE 1 PARA VOLTAR A EDIÇÃO DA PROVA");
 		voltar = sc.next().charAt(0);
 
-		while (voltar == '1') {
+		if(voltar == '1') {
 
-			MenuEdicaoProva();
-		
+			opcaoMain = MenuEdicaoProva();
+
 		}
 
 	}
@@ -123,7 +126,10 @@ public class Program {
 
 		System.out.print("\033\143");
 
-		switch(MenuEdicaoProva()) {
+		if(opcaoMain==' ') {
+			opcaoMain = MenuEdicaoProva();
+		}
+		switch(opcaoMain) {
 			case '1':
 
 				System.out.println("Digite o número de questões:");
