@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Program {
 
 	static double[] notasQuestoes = new double[4];
+
 	static char tipoUsuario;
-	static char opcaoMain = ' ';
 
 	static int antiRepeticao = 0;
 
@@ -96,14 +96,14 @@ public class Program {
 
 		if(voltar == '1') {
 
-			opcaoMain = MenuEdicaoProva();
+			MenuEdicaoProva();
 
 		}
 
 	}
 
 	public static void main(String[] args) {
-		
+
 		Scanner sc = new Scanner(System.in);
 		
 		do {
@@ -126,10 +126,7 @@ public class Program {
 
 		System.out.print("\033\143");
 
-		if(opcaoMain==' ') {
-			opcaoMain = MenuEdicaoProva();
-		}
-		switch(opcaoMain) {
+		switch(MenuEdicaoProva()) {
 			case '1':
 
 				System.out.println("Digite o número de questões:");
