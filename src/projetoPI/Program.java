@@ -4,51 +4,108 @@ import java.util.Scanner;
 
 public class Program {
 
-	static double valorNota;
-	static boolean usuarioProfessor = false;
-	static boolean usuarioAluno = false;
-	static double[] notasQuestoes = new double[10];
- 
-	public static void authEntradaDoUsuario(char TipoDeUsuario) {
+	static double[] notasQuestoes = new double[4];
+
+	static char tipoUsuario;
+
+	static int antiRepeticao = 0;
+
+	public static char authEntradaDoUsuario(char TipoDeUsuario) {
 
 		Scanner sc = new Scanner(System.in);
-
+		char UsuarioAutenticado = ' ';
+ 
 		switch(TipoDeUsuario) { 
 		
 			case '1':
-				int senhaProfessor;
 
-				System.out.println("Digite a senha para continuar!");
-				senhaProfessor = sc.nextInt();
+				int senhaProfessor = 123;
+				int senhaProfessorRecebida = 0;
+				int i = 0;
 
-				if(senhaProfessor == 123) {
+				do {
 
-					usuarioProfessor = true;
+					if(antiRepeticao != senhaProfessor) {
 
-				}else {
+						System.out.println("Digite a senha para continuar!");
+						System.out.println("Senha: 123");
+						senhaProfessorRecebida = sc.nextInt();
 
-					System.out.println("Senha incorreta tente novamente mais tarde!");
+					}
 
-				}
+					if(senhaProfessorRecebida == senhaProfessor || antiRepeticao == senhaProfessor) {
+				
+						UsuarioAutenticado = '1';
+						antiRepeticao = senhaProfessor;
+						i = 3;
+
+					}else {
+
+						int calc = 3 - (i + 1);
+						System.out.printf("Senha incorreta, você tem %d tentativas. \n", calc);
+
+					}
+
+					i++;
+				}while(i < 3);
 
 			break;
 						
 			case '2':
 
-				usuarioAluno = true;
+				UsuarioAutenticado = '2';
 		
 			break;
 
 		}
-		
+		return(UsuarioAutenticado);
 	}
-	
+
+	public static char MenuEdicaoProva() {
+
+		Scanner sc = new Scanner(System.in);
+		char OpcoesEditarProva = ' ';
+
+		if(authEntradaDoUsuario(tipoUsuario) == '1') {
+
+			do {
+
+				System.out.println("\n\nMENU DE EDIÇÃO DA PROVA!");
+				System.out.println("Escolha uma das opções a baixo para a editar da prova.\n");
+
+				System.out.println("1) Quantidade de questões");
+				System.out.println("2) Valor das questões");
+				System.out.println("3) Mode de ordens Aleatórias");
+				System.out.println("4) Número de Tentativas");
+
+				OpcoesEditarProva = sc.next().charAt(0);
+
+			}while(OpcoesEditarProva != '1' && OpcoesEditarProva != '2' && OpcoesEditarProva != '3' && OpcoesEditarProva != '4');
+
+		}
+		return OpcoesEditarProva;
+	}
+
+	public static void VoltarAoMenuProva() {
+
+		Scanner sc = new Scanner(System.in);
+		char voltar = ' ';
+
+		System.out.println("DIGITE 1 PARA VOLTAR A EDIÇÃO DA PROVA");
+		voltar = sc.next().charAt(0);
+
+		if(voltar == '1') {
+
+			MenuEdicaoProva();
+
+		}
+
+	}
+
 	public static void main(String[] args) {
-		
+
 		Scanner sc = new Scanner(System.in);
 		
-		char tipoUsuario;
-
 		do {
 
 			System.out.println("+-----------------------------------------------+");
@@ -67,61 +124,50 @@ public class Program {
 
 		}while(tipoUsuario != '1' && tipoUsuario != '2');
 
-		authEntradaDoUsuario(tipoUsuario);
+		System.out.print("\033\143");
 
-		char OpcoesEditarProva;
+		switch(MenuEdicaoProva()) {
+			case '1':
 
-		if(usuarioProfessor == true) {
+				System.out.println("Digite o número de questões:");
+				System.out.println("Limite Máximo: bloqueado em 20 questões. ");
 
-			do {
+				VoltarAoMenuProva();
 
-				System.out.println("\n\nMENU DE EDIÇÃO DA PROVA!");
-				System.out.println("Escolha uma das opções a baixo para a editar da prova.\n");
+			break;
 
-				System.out.println("1) Quantidade de questões");
-				System.out.println("2) Valor das questões");
-				System.out.println("3) Mode de ordens Aleatórias");
-				System.out.println("4) Número de Tentativas");
+			case '2':
 
-				OpcoesEditarProva = sc.next().charAt(0);
+				int controle = 0;
 
-			}while(OpcoesEditarProva != '1' && OpcoesEditarProva != '2' && OpcoesEditarProva != '3' && OpcoesEditarProva != '4');
+				do {
+					System.out.printf("Digite valor da questão %d: ", controle + 1);
+					notasQuestoes[controle] = sc.nextDouble();
 
-			switch(OpcoesEditarProva) {
-				case '1':
+					controle++;
+				}while(controle < notasQuestoes.length);
 
-					System.out.println("Digite o número de questões:");
-					System.out.println("Limite: ...");
+			break;
 
-				break;
+			case '3':
 
-				case '2':
+				System.out.println("Digite 1 para ativar embaralhamento automático!");
 
-					int controle = 0;
+			break;
+			
+			case '4':
 
-					do {
-						System.out.printf("Digite valor da questão %d: ", controle + 1);
-						notasQuestoes[controle] = sc.nextDouble();
+				System.out.println("Digite o número de tentativas para refezer a prova!");
 
-						controle++;
-					}while(controle < notasQuestoes.length);
+			break;
+		}
 
-				break;
+		if(tipoUsuario == '2' && authEntradaDoUsuario(tipoUsuario) == '2') {
 
-				case '3':
-
-					System.out.println("Digite 1 para ativar embaralhamento automático!");
-
-				break;
-				
-				case '4':
-
-					System.out.println("Digite o número de tentativas para refezer a prova!");
-
-				break;
-			}
+			System.out.println("A");
 
 		}
+
 		sc.close();
 	}
 }
