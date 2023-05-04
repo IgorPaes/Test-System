@@ -10,56 +10,6 @@ public class Program {
 
 	static int antiRepeticao = 0;
 
-	public static char authEntradaDoUsuario(char TipoDeUsuario) {
-
-		Scanner sc = new Scanner(System.in);
-		char UsuarioAutenticado = ' ';
- 
-		switch(TipoDeUsuario) { 
-		
-			case '1':
-
-				int senhaProfessor = 123;
-				int senhaProfessorRecebida = 0;
-				int i = 0;
-
-				do {
-
-					if(antiRepeticao != senhaProfessor) {
-
-						System.out.println("Digite a senha para continuar!");
-						System.out.println("Senha: 123");
-						senhaProfessorRecebida = sc.nextInt();
-
-					}
-
-					if(senhaProfessorRecebida == senhaProfessor || antiRepeticao == senhaProfessor) {
-				
-						UsuarioAutenticado = '1';
-						antiRepeticao = senhaProfessor;
-						i = 3;
-
-					}else {
-
-						int calc = 3 - (i + 1);
-						System.out.printf("Senha incorreta, você tem %d tentativas. \n", calc);
-
-					}
-
-					i++;
-				}while(i < 3);
-
-			break;
-						
-			case '2':
-
-				UsuarioAutenticado = '2';
-		
-			break;
-
-		}
-		return(UsuarioAutenticado);
-	}
 
 	public static char MenuEdicaoProva() {
 
