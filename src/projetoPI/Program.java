@@ -10,7 +10,7 @@ public class Program {
 
 		int numeroEscolhidoMenu = sc.nextInt(); 
 
-		// System.out.print("\033\143");
+		System.out.print("\033\143");
 
 		return numeroEscolhidoMenu;
 	}
@@ -32,26 +32,38 @@ public class Program {
 	static void AuthSenhaProfessor() {
 
 		int senha = 123;
+		int tentativasSenha = 6;
 
 		System.out.println("Digite a senha!");
-		
+		System.out.printf("SENHA: %d\n", senha);
+		System.out.printf("\nDigite: ");
 		int senhaDigitada = sc.nextInt();
 
-		for(int tentativasSenha = 1; tentativasSenha < 3; tentativasSenha++) {
+		for(int i = 1; i < tentativasSenha; i++) {
 
-			System.out.printf("Senha incorreta, Você possue mais %d tentavivas: \n", 3 - tentativasSenha);
+			if(i == (tentativasSenha - 1)) {
+
+				System.out.printf("Senha incorreta, você possue mais %d tentaviva: \n", tentativasSenha - i);
+				System.out.printf("SENHA: %d \n", senha);
+				System.out.printf("\nDigite: ");
+
+			}else {
+
+				System.out.printf("Senha incorreta, você possue mais %d tentavivas: \n", tentativasSenha - i);
+				System.out.printf("SENHA: %d \n", senha);
+				System.out.printf("\nDigite: ");
+
+			}
 			senhaDigitada = sc.nextInt();
-			
+
 			if(senhaDigitada == senha) {
 
 				menuProfessor();
+				// PASSAR TRUE SE PRECIAR PARA O MENU DE VOLTAR
 
 			}
-			
 
 		}
-		
-
 
 	}
 
@@ -74,13 +86,15 @@ public class Program {
 		}while(numeroEscolhidoProfessor <= 0 || numeroEscolhidoProfessor > 4);
 
 		switch(numeroEscolhidoProfessor) {
+
 			case 1:
-				menuProfessor();
+				System.out.println("A");
 			break;
 
 			case 2:
 				System.out.println("B");
 			break;
+
 		}
 
 		return 1;
