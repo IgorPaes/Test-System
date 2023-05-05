@@ -6,39 +6,89 @@ public class Program {
 
 	static Scanner sc = new Scanner(System.in); 
 
-	static char EscolhaMenu() {
+	static int escolhaMenu() {
 
-		char NumeroEscolhidoMenu = sc.next().charAt(0); 
+		int numeroEscolhidoMenu = sc.nextInt(); 
 
-		System.out.print("\033\143");
+		// System.out.print("\033\143");
 
-		return NumeroEscolhidoMenu;
+		return numeroEscolhidoMenu;
 	}
 
-	static void MenuProfessor(char EscolhaTipousuario) {
+	static void authTipoUsuario(int EscolhaTipousuario) {
 
 		switch(EscolhaTipousuario) {
-			case '1':
-				System.out.println("A");
+			case 1:
+				AuthSenhaProfessor();
 			break;
 
-			case '2':
+			case 2:
 				System.out.println("B");
 			break;
 		}
 
 	}
 
-	static double MenuProfessor() {
+	static void AuthSenhaProfessor() {
 
-		System.out.println();
+		int senha = 123;
+
+		System.out.println("Digite a senha!");
+		
+		int senhaDigitada = sc.nextInt();
+
+		for(int tentativasSenha = 1; tentativasSenha < 3; tentativasSenha++) {
+
+			System.out.printf("Senha incorreta, Você possue mais %d tentavivas: \n", 3 - tentativasSenha);
+			senhaDigitada = sc.nextInt();
+			
+			if(senhaDigitada == senha) {
+
+				menuProfessor();
+
+			}
+			
+
+		}
+		
+
+
+	}
+
+	static double menuProfessor() {
+
+		int numeroEscolhidoProfessor;
+
+		do{
+
+			System.out.println("BEM VINDO AO MENU DO PROFESSOR!");
+			System.out.println("+-----------------------------------------------+");
+			System.out.println("1) QUANTIDADE DE QUESTÕES");
+			System.out.println("2) VALOR DAS QUESTÕES");
+			System.out.println("3) MODO DE QUESTÕES ALEATÓRIAS");
+			System.out.println("4) NÚMERO DE TENTATIVAS");
+			System.out.println("+-----------------------------------------------+");
+
+			numeroEscolhidoProfessor = sc.nextInt();
+
+		}while(numeroEscolhidoProfessor <= 0 || numeroEscolhidoProfessor > 4);
+
+		switch(numeroEscolhidoProfessor) {
+			case 1:
+				menuProfessor();
+			break;
+
+			case 2:
+				System.out.println("B");
+			break;
+		}
 
 		return 1;
 	}
 
 	public static void main(String[] args) {
 
-		char NumeroEscolhido;
+		int numeroEscolhido;
 
 		do {
 
@@ -55,11 +105,13 @@ public class Program {
 			System.out.println("1) Professor");
 			System.out.println("2) Aluno");
 
-			NumeroEscolhido = EscolhaMenu();
+			numeroEscolhido = escolhaMenu();
+			System.out.println(numeroEscolhido);
 
-		}while(NumeroEscolhido != '1' && NumeroEscolhido != '2');
+		}while(numeroEscolhido <= 0 || numeroEscolhido > 2);
 
-		MenuProfessor(NumeroEscolhido);
-		
+		authTipoUsuario(numeroEscolhido);
+
 	}
+
 }
