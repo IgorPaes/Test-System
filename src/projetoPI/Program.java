@@ -32,7 +32,7 @@ public class Program {
 	static void AuthSenhaProfessor() {
 
 		int senha = 123;
-		int tentativasSenha = 6;
+		int tentativasSenha = 3;
 
 		System.out.println("Digite a senha!");
 		System.out.printf("SENHA: %d\n", senha);
@@ -41,6 +41,8 @@ public class Program {
 
 		for(int i = 1; i < tentativasSenha; i++) {
 
+			
+			
 			if(i == (tentativasSenha - 1)) {
 
 				System.out.printf("Senha incorreta, você possue mais %d tentaviva: \n", tentativasSenha - i);
@@ -56,11 +58,13 @@ public class Program {
 			}
 			senhaDigitada = sc.nextInt();
 
-			if(senhaDigitada == senha) {
-
+			// NÃO FUNCIONA AINDA
+			boolean SenhaCheck = senha == senhaDigitada;
+			if(SenhaCheck) {
+	
 				menuProfessor();
-				// PASSAR TRUE SE PRECIAR PARA O MENU DE VOLTAR
-
+				// PASSAR TRUE SE PRECIAR PARA O MENU DE VOLTAR.
+	
 			}
 
 		}
