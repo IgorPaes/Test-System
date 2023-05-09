@@ -40,26 +40,28 @@ public class Program {
 		int senhaDigitada = sc.nextInt();
 
 		for(int i = 1; i < tentativasSenha; i++) {
-
 			
-			
-			if(i == (tentativasSenha - 1)) {
+			boolean SenhaCheck = senha == senhaDigitada;
 
-				System.out.printf("Senha incorreta, você possue mais %d tentaviva: \n", tentativasSenha - i);
-				System.out.printf("SENHA: %d \n", senha);
-				System.out.printf("\nDigite: ");
+			if(!SenhaCheck) {
 
-			}else {
+				if(i == (tentativasSenha - 1)) {
 
-				System.out.printf("Senha incorreta, você possue mais %d tentavivas: \n", tentativasSenha - i);
-				System.out.printf("SENHA: %d \n", senha);
-				System.out.printf("\nDigite: ");
+					System.out.printf("Senha incorreta, você possue mais %d tentaviva: \n", tentativasSenha - i);
+					System.out.printf("SENHA: %d \n", senha);
+					System.out.printf("\nDigite: ");
+	
+				}else {
+	
+					System.out.printf("Senha incorreta, você possue mais %d tentavivas: \n", tentativasSenha - i);
+					System.out.printf("SENHA: %d \n", senha);
+					System.out.printf("\nDigite: ");
+	
+				}
+				senhaDigitada = sc.nextInt();
 
 			}
-			senhaDigitada = sc.nextInt();
 
-			// NÃO FUNCIONA AINDA
-			boolean SenhaCheck = senha == senhaDigitada;
 			if(SenhaCheck) {
 	
 				menuProfessor();
