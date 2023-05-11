@@ -45,15 +45,17 @@ public class Program {
 
 			if(!SenhaCheck) {
 
-				if(i == (tentativasSenha - 1)) {
+				int erroTentativas = tentativasSenha - i;
 
-					System.out.printf("Senha incorreta, você possue mais %d tentaviva: \n", tentativasSenha - i);
+				if(erroTentativas == 1) {
+
+					System.out.printf("Senha incorreta, você possue mais %d tentaviva: \n", erroTentativas);
 					System.out.printf("SENHA: %d \n", senha);
 					System.out.printf("\nDigite: ");
 	
 				}else {
 	
-					System.out.printf("Senha incorreta, você possue mais %d tentavivas: \n", tentativasSenha - i);
+					System.out.printf("Senha incorreta, você possue mais %d tentavivas: \n", erroTentativas);
 					System.out.printf("SENHA: %d \n", senha);
 					System.out.printf("\nDigite: ");
 	
