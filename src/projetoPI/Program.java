@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class Program {
 
-	static Scanner sc = new Scanner(System.in); 
+	static int recebeDigito() {
+		
+		Scanner sc = new Scanner(System.in); 
 
-	static int escolhaMenu() {
-
-		int numeroEscolhidoMenu = sc.nextInt(); 
+		int retornoDoScanner = sc.nextInt(); 
 
 		System.out.print("\033\143");
 
-		return numeroEscolhidoMenu;
+		return retornoDoScanner;
 	}
 
 	static void authTipoUsuario(int EscolhaTipousuario) {
@@ -32,35 +32,35 @@ public class Program {
 	static void AuthSenhaProfessor() {
 
 		int senha = 123;
-		int tentativasSenha = 3;
+		int maxTentativasSenha = 3;
 
 		System.out.println("Digite a senha!");
 		System.out.printf("SENHA: %d\n", senha);
 		System.out.printf("\nDigite: ");
-		int senhaDigitada = sc.nextInt();
+		int senhaDigitada = recebeDigito();
 
-		for(int i = 1; i < tentativasSenha; i++) {
-			
+		for(int i = 1; i < maxTentativasSenha; i++) {
+		
 			boolean SenhaCheck = senha == senhaDigitada;
 
 			if(!SenhaCheck) {
 
-				int erroTentativas = tentativasSenha - i;
+				int erroTentativas = maxTentativasSenha - i;
 
 				if(erroTentativas == 1) {
 
 					System.out.printf("Senha incorreta, você possue mais %d tentaviva: \n", erroTentativas);
 					System.out.printf("SENHA: %d \n", senha);
 					System.out.printf("\nDigite: ");
-	
+
 				}else {
-	
+
 					System.out.printf("Senha incorreta, você possue mais %d tentavivas: \n", erroTentativas);
 					System.out.printf("SENHA: %d \n", senha);
 					System.out.printf("\nDigite: ");
 	
 				}
-				senhaDigitada = sc.nextInt();
+				senhaDigitada = recebeDigito();
 
 			}
 
@@ -89,7 +89,7 @@ public class Program {
 			System.out.println("4) NÚMERO DE TENTATIVAS");
 			System.out.println("+-----------------------------------------------+");
 
-			numeroEscolhidoProfessor = sc.nextInt();
+			numeroEscolhidoProfessor = recebeDigito();
 
 		}while(numeroEscolhidoProfessor <= 0 || numeroEscolhidoProfessor > 4);
 
@@ -127,8 +127,7 @@ public class Program {
 			System.out.println("1) Professor");
 			System.out.println("2) Aluno");
 
-			numeroEscolhido = escolhaMenu();
-			System.out.println(numeroEscolhido);
+			numeroEscolhido = recebeDigito();
 
 		}while(numeroEscolhido <= 0 || numeroEscolhido > 2);
 
