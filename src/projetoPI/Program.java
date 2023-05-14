@@ -39,11 +39,16 @@ public class Program {
 		System.out.printf("\nDigite: ");
 		int senhaDigitada = recebeDigito();
 
-		for(int i = 1; i < maxTentativasSenha; i++) {
+		for(int i = 1; i < (maxTentativasSenha + 1); i++) {
 		
 			boolean SenhaCheck = senha == senhaDigitada;
 
-			if(!SenhaCheck) {
+			if(SenhaCheck) {
+	
+				menuProfessor();
+				// PASSAR TRUE SE PRECIAR PARA O MENU DE VOLTAR.
+
+			}else if(!SenhaCheck && i != maxTentativasSenha) {
 
 				int erroTentativas = maxTentativasSenha - i;
 
@@ -62,13 +67,6 @@ public class Program {
 				}
 				senhaDigitada = recebeDigito();
 
-			}
-
-			if(SenhaCheck) {
-	
-				menuProfessor();
-				// PASSAR TRUE SE PRECIAR PARA O MENU DE VOLTAR.
-	
 			}
 
 		}
