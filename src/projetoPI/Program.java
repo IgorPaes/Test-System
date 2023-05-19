@@ -1,5 +1,6 @@
 package projetoPI;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Program {
@@ -79,7 +80,7 @@ public class Program {
 
 		do{
 
-			System.out.println("BEM VINDO AO MENU DO PROFESSOR!");
+			System.out.println("BEM VINDO AO MENU DE EDIÇÃO DA PROVA!");
 			System.out.println("+-----------------------------------------------+");
 			System.out.println("1) QUANTIDADE DE QUESTÕES");
 			System.out.println("2) VALOR DAS QUESTÕES");
@@ -91,19 +92,85 @@ public class Program {
 
 		}while(numeroEscolhidoProfessor <= 0 || numeroEscolhidoProfessor > 4);
 
+		int qtdQuestoes = 0;
+		
 		switch(numeroEscolhidoProfessor) {
-
+			
 			case 1:
-				System.out.println("A");
+				qtdQuestoes = quantidadeQuestoes();
 			break;
 
 			case 2:
-				System.out.println("B");
+				
+			break;
+
+			case 3:
+				
+			break;
+
+			case 4:
+				
 			break;
 
 		}
 
+		geralQuestoes(qtdQuestoes);
+
 		return 1;
+	}
+
+	static String[][] geralQuestoes(int qtdQuestoes) {
+
+		String listaQuestoesRespostas[][] = new String[qtdQuestoes][qtdQuestoes];
+
+		// PERGUNTAS
+		listaQuestoesRespostas[0][0] = "1";
+		listaQuestoesRespostas[0][1] = "2";
+		listaQuestoesRespostas[0][2] = "3";
+		listaQuestoesRespostas[0][3] = "4";
+		listaQuestoesRespostas[0][4] = "5";
+		listaQuestoesRespostas[0][5] = "6";
+		listaQuestoesRespostas[0][6] = "7";
+		listaQuestoesRespostas[0][7] = "8";
+		listaQuestoesRespostas[0][8] = "9";
+		listaQuestoesRespostas[0][9] = "10";
+
+		// RESPOSTAS
+		listaQuestoesRespostas[1][0] = 
+		"A) Resposta 1 \n" + 
+		"B) Resposta 2 \n" + 
+		"C) Resposta 3 \n" + 
+		"D) Resposta 4 \n" + 
+		"E) Resposta 5 \n" ;
+		listaQuestoesRespostas[1][1] = "2";
+		listaQuestoesRespostas[1][2] = "3";
+		listaQuestoesRespostas[1][3] = "4";
+		listaQuestoesRespostas[1][4] = "5";
+		listaQuestoesRespostas[1][5] = "6";
+		listaQuestoesRespostas[1][6] = "7";
+		listaQuestoesRespostas[1][7] = "8";
+		listaQuestoesRespostas[1][8] = "9";
+		listaQuestoesRespostas[1][9] = "10";
+
+		return listaQuestoesRespostas;
+	}
+
+	static int quantidadeQuestoes() {
+
+		Scanner sc = new Scanner(System.in); 
+		int qtdQuestoes =  0;
+
+		System.out.println("Digite a quantidade de questões de 1 a 10");
+		qtdQuestoes = sc.nextInt();
+
+		while(qtdQuestoes < 1 || qtdQuestoes > 10){
+
+			System.out.println("Opção invalida Digite novamente");
+			qtdQuestoes = sc.nextInt();
+
+		}
+		
+		return qtdQuestoes;
 	}
 
 	public static void main(String[] args) {
