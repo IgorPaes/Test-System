@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Program {
 
-	static int recebeDigito() {
+	static int recebeLimpa() {
 		
 		Scanner sc = new Scanner(System.in); 
 
@@ -38,7 +38,7 @@ public class Program {
 		System.out.println("Digite a senha!");
 		System.out.printf("SENHA: %d\n", senha);
 		System.out.printf("\nDigite: ");
-		int senhaDigitada = recebeDigito();
+		int senhaDigitada = recebeLimpa();
 
 		for(int i = 1; i < (maxTentativasSenha + 1); i++) {
 		
@@ -66,7 +66,7 @@ public class Program {
 					System.out.printf("\nDigite: ");
 	
 				}
-				senhaDigitada = recebeDigito();
+				senhaDigitada = recebeLimpa();
 
 			}
 
@@ -80,7 +80,8 @@ public class Program {
 
 		do{
 
-			System.out.println("BEM VINDO AO MENU DE EDIÇÃO DA PROVA!");
+			System.out.println("+-----------------------------------------------+");
+			System.out.println("***         MENU DE EDIÇÃO DA PROVA!          ***");
 			System.out.println("+-----------------------------------------------+");
 			System.out.println("1) QUANTIDADE DE QUESTÕES");
 			System.out.println("2) VALOR DAS QUESTÕES");
@@ -88,7 +89,7 @@ public class Program {
 			System.out.println("4) NÚMERO DE TENTATIVAS");
 			System.out.println("+-----------------------------------------------+");
 
-			numeroEscolhidoProfessor = recebeDigito();
+			numeroEscolhidoProfessor = recebeLimpa();
 
 		}while(numeroEscolhidoProfessor <= 0 || numeroEscolhidoProfessor > 4);
 
@@ -114,14 +115,41 @@ public class Program {
 
 		}
 
-		geralQuestoes(qtdQuestoes);
+		// String listaGeral[][] = geralQuestoes(qtdQuestoes);
 
 		return 1;
+	}
+	
+	static boolean voltarMenu() {
+
+		Scanner sc = new Scanner(System.in); 
+		int digitoVoltarContinuar;
+
+		do {
+
+			System.out.println("Digite 1 para continuar ou 0 para voltar ao menu de edição");
+			System.out.println("1) Continuar");
+			System.out.println("0) Voltar ao Menu");
+			digitoVoltarContinuar = recebeLimpa();
+
+		}while(digitoVoltarContinuar != 1 && digitoVoltarContinuar != 0);
+
+		if(digitoVoltarContinuar == 1) {
+
+			return true;
+
+		}else {
+
+			menuProfessor();
+			return false;
+
+		}
+
 	}
 
 	static String[][] geralQuestoes(int qtdQuestoes) {
 
-		String listaQuestoesRespostas[][] = new String[qtdQuestoes][qtdQuestoes];
+		String listaQuestoesRespostas[][] = new String[2][qtdQuestoes];
 
 		// PERGUNTAS
 		listaQuestoesRespostas[0][0] = "1";
@@ -152,26 +180,70 @@ public class Program {
 		listaQuestoesRespostas[1][8] = "9";
 		listaQuestoesRespostas[1][9] = "10";
 
+		// VALOR DAS QUESTÕES
+		listaQuestoesRespostas[2][0] = "1";
+		listaQuestoesRespostas[2][1] = "2";
+		listaQuestoesRespostas[2][2] = "0.50";
+		listaQuestoesRespostas[2][3] = "1";
+		listaQuestoesRespostas[2][4] = "0.50";
+		listaQuestoesRespostas[2][5] = "2";
+		listaQuestoesRespostas[2][6] = "0.75";
+		listaQuestoesRespostas[2][7] = "1";
+		listaQuestoesRespostas[2][8] = "0.25";
+		listaQuestoesRespostas[2][9] = "1";
+
 		return listaQuestoesRespostas;
 	}
 
 	static int quantidadeQuestoes() {
 
 		Scanner sc = new Scanner(System.in); 
-		int qtdQuestoes =  0;
+		int qtdQuestoes = 0;
 
-		System.out.println("Digite a quantidade de questões de 1 a 10");
-		qtdQuestoes = sc.nextInt();
+		boolean VoltarContiniar = voltarMenu();
 
-		while(qtdQuestoes < 1 || qtdQuestoes > 10){
+		if(VoltarContiniar) {
 
-			System.out.println("Opção invalida Digite novamente");
-			qtdQuestoes = sc.nextInt();
+			System.out.println("Digite a quantidade de questões de 1 a 10");
+			qtdQuestoes = recebeLimpa();
+	
+			while(qtdQuestoes < 1 || qtdQuestoes > 10){
+	
+				System.out.println("Opção invalida digite novamente um valor de 1 a 10");
+				qtdQuestoes = recebeLimpa();
+	
+			}
 
 		}
-		
+		System.out.println("AAAAAAAAAA");
+
 		return qtdQuestoes;
 	}
+
+	// static int quantidadeQuestoes() {
+
+	// 	Scanner sc = new Scanner(System.in); 
+	// 	int qtdQuestoes = 0;
+
+	// 	boolean VoltarContiniar = voltarMenu();
+
+	// 	if(VoltarContiniar) {
+
+	// 		System.out.println("Digite a quantidade de questões de 1 a 10");
+	// 		qtdQuestoes = recebeLimpa();
+	
+	// 		while(qtdQuestoes < 1 || qtdQuestoes > 10){
+	
+	// 			System.out.println("Opção invalida digite novamente um valor de 1 a 10");
+	// 			qtdQuestoes = recebeLimpa();
+	
+	// 		}
+
+	// 	}
+	// 	System.out.println("AAAAAAAAAA");
+
+	// 	return qtdQuestoes;
+	// }
 
 	public static void main(String[] args) {
 
@@ -179,20 +251,21 @@ public class Program {
 
 		do {
 
+			System.out.print("\033\143");
 			System.out.println("+-----------------------------------------------+");
 			System.out.println("|                                               |");
 			System.out.println("|                SEJA BEM - VINDO               |");
 			System.out.println("|                                               |");
 			System.out.println("+-----------------------------------------------+\n");
 			
-			System.out.println("******* Prova de Logica de Programação (JAVA) *******\n");
+			System.out.println("****** Prova de Lógica a Programação (JAVA) ******\n");
 
-			System.out.println("Você é um Professor ou um Aluno?");
+			System.out.println("Selecione a opção correspondente:");
 
 			System.out.println("1) Professor");
 			System.out.println("2) Aluno");
 
-			numeroEscolhido = recebeDigito();
+			numeroEscolhido = recebeLimpa();
 
 		}while(numeroEscolhido <= 0 || numeroEscolhido > 2);
 
