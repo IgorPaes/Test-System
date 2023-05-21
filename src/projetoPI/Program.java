@@ -1,15 +1,13 @@
 package projetoPI;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Program {
 
 	static int recebeLimpa() {
 		
-		Scanner sc = new Scanner(System.in); 
-
-		int retornoDoScanner = sc.nextInt(); 
+		Scanner intScanner = new Scanner(System.in); 
+		int retornoDoScanner = intScanner.nextInt(); 
 
 		System.out.print("\033\143");
 
@@ -40,7 +38,7 @@ public class Program {
 		System.out.printf("\nDigite: ");
 		int senhaDigitada = recebeLimpa();
 
-		for(int i = 1; i < (maxTentativasSenha + 1); i++) {
+		for(int tentativas = 1; tentativas < (maxTentativasSenha + 1); tentativas++) {
 		
 			boolean SenhaCheck = senha == senhaDigitada;
 
@@ -49,32 +47,33 @@ public class Program {
 				menuProfessor();
 				// PASSAR TRUE SE PRECIAR PARA O MENU DE VOLTAR.
 
-			}else if(!SenhaCheck && i != maxTentativasSenha) {
+			}else if(!SenhaCheck && tentativas != maxTentativasSenha) {
 
-				int erroTentativas = maxTentativasSenha - i;
+				int erroTentativas = maxTentativasSenha - tentativas;
 
-				if(erroTentativas == 1) {
+				if(erroTentativas > 1) {
 
-					System.out.printf("Senha incorreta, você possue mais %d tentaviva: \n", erroTentativas);
+					System.out.printf("Senha incorreta, você possue mais %d tentavivas: \n", erroTentativas);
 					System.out.printf("SENHA: %d \n", senha);
 					System.out.printf("\nDigite: ");
 
 				}else {
 
-					System.out.printf("Senha incorreta, você possue mais %d tentavivas: \n", erroTentativas);
+					System.out.printf("Senha incorreta, você possue mais %d tentaviva: \n", erroTentativas);
 					System.out.printf("SENHA: %d \n", senha);
 					System.out.printf("\nDigite: ");
 	
 				}
+
 				senhaDigitada = recebeLimpa();
 
 			}
-
+			
 		}
 
 	}
 
-	static double menuProfessor() {
+	static void menuProfessor() {
 
 		int numeroEscolhidoProfessor;
 
@@ -88,10 +87,12 @@ public class Program {
 			System.out.println("3) MODO DE QUESTÕES ALEATÓRIAS");
 			System.out.println("4) NÚMERO DE TENTATIVAS");
 			System.out.println("+-----------------------------------------------+");
+			System.out.println("0) VOLTAR");
+			System.out.println("+-----------------------------------------------+");
 
 			numeroEscolhidoProfessor = recebeLimpa();
 
-		}while(numeroEscolhidoProfessor <= 0 || numeroEscolhidoProfessor > 4);
+		}while(numeroEscolhidoProfessor < 0 || numeroEscolhidoProfessor > 4);
 
 		int qtdQuestoes = 0;
 		
@@ -102,7 +103,7 @@ public class Program {
 			break;
 
 			case 2:
-				
+				System.out.println("AAA");
 			break;
 
 			case 3:
@@ -113,23 +114,34 @@ public class Program {
 				
 			break;
 
+			case 0:
+				menuInicial();
+			break;
+
 		}
+
+		System.out.println(qtdQuestoes);
+		// construtorProva();
+
+	}
+
+	static void construtorProva() {
+
+
 
 		// String listaGeral[][] = geralQuestoes(qtdQuestoes);
 
-		return 1;
 	}
 	
 	static boolean voltarMenu() {
 
-		Scanner sc = new Scanner(System.in); 
 		int digitoVoltarContinuar;
 
 		do {
 
-			System.out.println("Digite 1 para continuar ou 0 para voltar ao menu de edição");
+			System.out.println("Digite 1 para continuar ou 0 para voltar ao menu de edição:");
 			System.out.println("1) Continuar");
-			System.out.println("0) Voltar ao Menu");
+			System.out.println("0) Voltar");
 			digitoVoltarContinuar = recebeLimpa();
 
 		}while(digitoVoltarContinuar != 1 && digitoVoltarContinuar != 0);
@@ -149,7 +161,7 @@ public class Program {
 
 	static String[][] geralQuestoes(int qtdQuestoes) {
 
-		String listaQuestoesRespostas[][] = new String[2][qtdQuestoes];
+		String listaQuestoesRespostas[][] = new String[3][qtdQuestoes];
 
 		// PERGUNTAS
 		listaQuestoesRespostas[0][0] = "1";
@@ -197,7 +209,6 @@ public class Program {
 
 	static int quantidadeQuestoes() {
 
-		Scanner sc = new Scanner(System.in); 
 		int qtdQuestoes = 0;
 
 		boolean VoltarContiniar = voltarMenu();
@@ -209,43 +220,30 @@ public class Program {
 	
 			while(qtdQuestoes < 1 || qtdQuestoes > 10){
 	
-				System.out.println("Opção invalida digite novamente um valor de 1 a 10");
+				System.out.println("Opção invalida! digite um valor entre 1 e 10");
 				qtdQuestoes = recebeLimpa();
 	
 			}
 
 		}
-		System.out.println("AAAAAAAAAA");
 
 		return qtdQuestoes;
 	}
 
-	// static int quantidadeQuestoes() {
+	static double[] valorQuestoes() {
 
-	// 	Scanner sc = new Scanner(System.in); 
-	// 	int qtdQuestoes = 0;
+		double valorQuestoes[] = new double[1];
 
-	// 	boolean VoltarContiniar = voltarMenu();
+		for (int i = 0; i < valorQuestoes.length; i++) {
+			
 
-	// 	if(VoltarContiniar) {
 
-	// 		System.out.println("Digite a quantidade de questões de 1 a 10");
-	// 		qtdQuestoes = recebeLimpa();
-	
-	// 		while(qtdQuestoes < 1 || qtdQuestoes > 10){
-	
-	// 			System.out.println("Opção invalida digite novamente um valor de 1 a 10");
-	// 			qtdQuestoes = recebeLimpa();
-	
-	// 		}
+		}
 
-	// 	}
-	// 	System.out.println("AAAAAAAAAA");
+		return valorQuestoes;
+	}
 
-	// 	return qtdQuestoes;
-	// }
-
-	public static void main(String[] args) {
+	static void menuInicial() {
 
 		int numeroEscolhido;
 
@@ -270,6 +268,11 @@ public class Program {
 		}while(numeroEscolhido <= 0 || numeroEscolhido > 2);
 
 		authTipoUsuario(numeroEscolhido);
+	}
+
+	public static void main(String[] args) {
+
+		menuInicial(); // :) 
 
 	}
 
