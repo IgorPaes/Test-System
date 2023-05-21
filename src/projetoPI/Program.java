@@ -45,6 +45,7 @@ public class Program {
 			if(SenhaCheck) {
 	
 				menuProfessor();
+				break;
 				// PASSAR TRUE SE PRECIAR PARA O MENU DE VOLTAR.
 
 			}else if(!SenhaCheck && tentativas != maxTentativasSenha) {
@@ -72,9 +73,9 @@ public class Program {
 		}
 
 	}
-
+	
 	static void menuProfessor() {
-
+		System.out.println("...");
 		int numeroEscolhidoProfessor;
 
 		do{
@@ -103,7 +104,7 @@ public class Program {
 			break;
 
 			case 2:
-				System.out.println("AAA");
+				valorQuestoes();
 			break;
 
 			case 3:
@@ -120,7 +121,6 @@ public class Program {
 
 		}
 
-		System.out.println(qtdQuestoes);
 		// construtorProva();
 
 	}
@@ -232,11 +232,11 @@ public class Program {
 
 	static double[] valorQuestoes() {
 
-		double valorQuestoes[] = new double[1];
+		double valorQuestoes[] = new double[9];
 
 		for (int i = 0; i < valorQuestoes.length; i++) {
 			
-
+			valorQuestoes[i] = recebeLimpa();
 
 		}
 
