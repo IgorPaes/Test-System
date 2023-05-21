@@ -6,8 +6,8 @@ public class Program {
 
 	static int recebeLimpa() {
 		
-		Scanner intScanner = new Scanner(System.in); 
-		int retornoDoScanner = intScanner.nextInt(); 
+		Scanner scanner = new Scanner(System.in); 
+		int retornoDoScanner = scanner.nextInt(); 
 
 		System.out.print("\033\143");
 
@@ -39,7 +39,7 @@ public class Program {
 		int senhaDigitada = recebeLimpa();
 
 		for(int tentativas = 1; tentativas < (maxTentativasSenha + 1); tentativas++) {
-		
+							 
 			boolean SenhaCheck = senha == senhaDigitada;
 
 			if(SenhaCheck) {
@@ -104,7 +104,7 @@ public class Program {
 			break;
 
 			case 2:
-				valorQuestoes();
+				controleValorQuestoes();
 			break;
 
 			case 3:
@@ -140,8 +140,8 @@ public class Program {
 		do {
 
 			System.out.println("Digite 1 para continuar ou 0 para voltar ao menu de edição:");
-			System.out.println("1) Continuar");
-			System.out.println("0) Voltar");
+			System.out.println("1) Alterar Resposta");
+			System.out.println("0) Voltar Menu");
 			digitoVoltarContinuar = recebeLimpa();
 
 		}while(digitoVoltarContinuar != 1 && digitoVoltarContinuar != 0);
@@ -211,36 +211,46 @@ public class Program {
 
 		int qtdQuestoes = 0;
 
-		boolean VoltarContiniar = voltarMenu();
+		boolean voltarContinuar = true;
 
-		if(VoltarContiniar) {
+		while(voltarContinuar) {
 
 			System.out.println("Digite a quantidade de questões de 1 a 10");
 			qtdQuestoes = recebeLimpa();
-	
+
 			while(qtdQuestoes < 1 || qtdQuestoes > 10){
-	
+
 				System.out.println("Opção invalida! digite um valor entre 1 e 10");
 				qtdQuestoes = recebeLimpa();
-	
+
 			}
+			
+			voltarContinuar = voltarMenu();
 
 		}
-
+		// AQUI TEM QUE ARRUMAR ELE ESTÁ CHAMANDO A FUNÇÃO ANTES DE RETORNAR O qtdQuestoes
 		return qtdQuestoes;
 	}
 
-	static double[] valorQuestoes() {
+	static double[] controleValorQuestoes() {
 
-		double valorQuestoes[] = new double[9];
 
-		for (int i = 0; i < valorQuestoes.length; i++) {
+		double controleValorQuestoes[] = new double[10];
+		double somaValorQuestoes = 0;
+
+		for(int i = 0; i < controleValorQuestoes.length; i++) {
 			
-			valorQuestoes[i] = recebeLimpa();
+			System.out.printf("Digite a nota de questão de número %d \n", i + 1);
+			controleValorQuestoes[i] = recebeLimpa();
+			somaValorQuestoes += controleValorQuestoes[i];
 
 		}
 
-		return valorQuestoes;
+		// if(somaValorQuestoes) {
+			
+		// }
+
+		return controleValorQuestoes;
 	}
 
 	static void menuInicial() {
