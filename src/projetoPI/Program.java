@@ -88,7 +88,7 @@ public class Program {
 			System.out.println("3) MODO DE QUESTÕES ALEATÓRIAS");
 			System.out.println("4) NÚMERO DE TENTATIVAS");
 			System.out.println("+-----------------------------------------------+");
-			System.out.println("0) VOLTAR");
+			System.out.println("0) SALVAR E VOLTAR");
 			System.out.println("+-----------------------------------------------+");
 
 			numeroEscolhidoProfessor = recebeLimpa();
