@@ -164,16 +164,17 @@ public class Program {
 		String listaQuestoesRespostas[][] = new String[3][qtdQuestoes];
 
 		// PERGUNTAS
-		listaQuestoesRespostas[0][0] = "1";
-		listaQuestoesRespostas[0][1] = "2";
-		listaQuestoesRespostas[0][2] = "3";
-		listaQuestoesRespostas[0][3] = "4";
-		listaQuestoesRespostas[0][4] = "5";
-		listaQuestoesRespostas[0][5] = "6";
-		listaQuestoesRespostas[0][6] = "7";
-		listaQuestoesRespostas[0][7] = "8";
-		listaQuestoesRespostas[0][8] = "9";
-		listaQuestoesRespostas[0][9] = "10";
+		listaQuestoesRespostas[0][0] = "Questão  : Qual dos seguintes tipos de dados em Java representa números inteiros sem casas decimais?";
+		listaQuestoesRespostas[0][1] = "Questão  : Qual é a saída deste código Java?\n int x = 5;\nSystem.out.println(x++);";
+		listaQuestoesRespostas[0][2] = "Questão  : Em Java, qual é a palavra-chave utilizada para definir uma classe?";
+		listaQuestoesRespostas[0][3] = "Questão  : Qual é a estrutura de controle em Java utilizada para repetir um bloco de código várias vezes?";
+		listaQuestoesRespostas[0][4] = "Questão  : O que o seguinte código Java faz?\n String nome = 'João'\nSystem.out.println(nome.length())";
+		listaQuestoesRespostas[0][5] = "Questão  : Em Java, qual é a forma correta de declarar um array de inteiros chamado 'numeros' com tamanho 5?";
+		listaQuestoesRespostas[0][6] = "Questão  : O que o seguinte código Java faz?\nint resultado = Math.abs(-10);\nSystem.out.println(resultado);";
+		listaQuestoesRespostas[0][7] = "Questão  : Qual é a forma correta de escrever um comentário de várias linhas em Java?";
+		listaQuestoesRespostas[0][8] = "Questão  : Em Java, como você chama um método de uma classe 'MinhaClasse'?";
+		listaQuestoesRespostas[0][9] = "Questão  : Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\nSystem.out.print(numeros[i] + ' ')\n}";
+	
 
 		// ALTERNATIVAS
 		listaQuestoesRespostas[1][0] = 
