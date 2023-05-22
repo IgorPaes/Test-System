@@ -175,13 +175,12 @@ public class Program {
 		listaQuestoesRespostas[0][8] = "9";
 		listaQuestoesRespostas[0][9] = "10";
 
-		// RESPOSTAS
+		// ALTERNATIVAS
 		listaQuestoesRespostas[1][0] = 
-		"A) Resposta 1 \n" + 
-		"B) Resposta 2 \n" + 
-		"C) Resposta 3 \n" + 
-		"D) Resposta 4 \n" + 
-		"E) Resposta 5 \n" ;
+		"A) Alternativa 1 \n" + 
+		"B) Alternativa 2 \n" + 
+		"C) Alternativa 3 \n" + 
+		"D) Alternativa 4 \n";
 		listaQuestoesRespostas[1][1] = "2";
 		listaQuestoesRespostas[1][2] = "3";
 		listaQuestoesRespostas[1][3] = "4";
