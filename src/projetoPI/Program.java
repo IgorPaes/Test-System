@@ -75,7 +75,7 @@ public class Program {
 	}
 	
 	static void menuProfessor() {
-		System.out.println("...");
+
 		int numeroEscolhidoProfessor;
 
 		do{
