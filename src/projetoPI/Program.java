@@ -44,9 +44,8 @@ public class Program {
 
 			if(SenhaCheck) {
 	
-				menuProfessor();
+				menuProfessor(true, 0);
 				break;
-				// PASSAR TRUE SE PRECIAR PARA O MENU DE VOLTAR.
 
 			}else if(!SenhaCheck && tentativas != maxTentativasSenha) {
 
@@ -73,38 +72,45 @@ public class Program {
 		}
 
 	}
+
+	static void menuProfessor(boolean altResposta, int numeroEscolhido) {
+										
+		int numeroEscolhidoProfessor = 0;
+		
+		if(altResposta) {
+
+			do{
+
+				System.out.println("+-----------------------------------------------+");
+				System.out.println("***         MENU DE EDIÇÃO DA PROVA!          ***");
+				System.out.println("+-----------------------------------------------+");
+				System.out.println("1) QUANTIDADE DE QUESTÕES");
+				System.out.println("2) VALOR DAS QUESTÕES");
+				System.out.println("3) MODO DE QUESTÕES ALEATÓRIAS");
+				System.out.println("4) NÚMERO DE TENTATIVAS");
+				System.out.println("+-----------------------------------------------+");
+				System.out.println("0) SALVAR E VOLTAR");
+				System.out.println("+-----------------------------------------------+");
 	
-	static void menuProfessor() {
+				numeroEscolhidoProfessor = recebeLimpa();
+	
+			}while(numeroEscolhidoProfessor < 0 || numeroEscolhidoProfessor > 4);	
+			
+		}else {
 
-		int numeroEscolhidoProfessor;
-
-		do{
-
-			System.out.println("+-----------------------------------------------+");
-			System.out.println("***         MENU DE EDIÇÃO DA PROVA!          ***");
-			System.out.println("+-----------------------------------------------+");
-			System.out.println("1) QUANTIDADE DE QUESTÕES");
-			System.out.println("2) VALOR DAS QUESTÕES");
-			System.out.println("3) MODO DE QUESTÕES ALEATÓRIAS");
-			System.out.println("4) NÚMERO DE TENTATIVAS");
-			System.out.println("+-----------------------------------------------+");
-			System.out.println("0) SALVAR E VOLTAR");
-			System.out.println("+-----------------------------------------------+");
-
-			numeroEscolhidoProfessor = recebeLimpa();
-
-		}while(numeroEscolhidoProfessor < 0 || numeroEscolhidoProfessor > 4);
+			numeroEscolhidoProfessor = numeroEscolhido;
+			
+		}
 
 		int qtdQuestoes = 0;
-		
+
 		switch(numeroEscolhidoProfessor) {
-			
 			case 1:
 				qtdQuestoes = quantidadeQuestoes();
 			break;
 
 			case 2:
-				controleValorQuestoes();
+				controleValorQuestoes();	
 			break;
 
 			case 3:
@@ -120,20 +126,18 @@ public class Program {
 			break;
 
 		}
+	
+		if(numeroEscolhidoProfessor > 0) {
+
+			voltarMenu(numeroEscolhidoProfessor);
+
+		}
 
 		// construtorProva();
 
 	}
-
-	static void construtorProva() {
-
-
-
-		// String listaGeral[][] = geralQuestoes(qtdQuestoes);
-
-	}
 	
-	static boolean voltarMenu() {
+	static void voltarMenu(int numeroEscolhidoProfessor) {
 
 		int digitoVoltarContinuar;
 
@@ -147,15 +151,21 @@ public class Program {
 		}while(digitoVoltarContinuar != 1 && digitoVoltarContinuar != 0);
 
 		if(digitoVoltarContinuar == 1) {
-
-			return true;
+			
+			menuProfessor(false, numeroEscolhidoProfessor);
 
 		}else {
 
-			menuProfessor();
-			return false;
+			menuProfessor(true, 0);
 
 		}
+		
+
+	}
+
+	static void construtorProva() {
+
+		// String listaGeral[][] = geralQuestoes(qtdQuestoes);
 
 	}
 
@@ -247,24 +257,16 @@ public class Program {
 
 		int qtdQuestoes = 0;
 
-		boolean voltarContinuar = true;
+		System.out.println("Digite a quantidade de questões de 1 a 10");
+		qtdQuestoes = recebeLimpa();
 
-		while(voltarContinuar) {
+		while(qtdQuestoes < 1 || qtdQuestoes > 10){
 
-			System.out.println("Digite a quantidade de questões de 1 a 10");
+			System.out.println("Opção invalida! digite um valor entre 1 e 10");
 			qtdQuestoes = recebeLimpa();
 
-			while(qtdQuestoes < 1 || qtdQuestoes > 10){
-
-				System.out.println("Opção invalida! digite um valor entre 1 e 10");
-				qtdQuestoes = recebeLimpa();
-
-			}
-			
-			voltarContinuar = voltarMenu();
-
 		}
-		// AQUI TEM QUE ARRUMAR ELE ESTÁ CHAMANDO A FUNÇÃO ANTES DE RETORNAR O qtdQuestoes
+			
 		return qtdQuestoes;
 	}
 
