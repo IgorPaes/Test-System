@@ -178,20 +178,56 @@ public class Program {
 
 		// ALTERNATIVAS
 		listaQuestoesRespostas[1][0] = 
-		"A) Alternativa 1 \n" + 
-		"B) Alternativa 2 \n" + 
-		"C) Alternativa 3 \n" + 
-		"D) Alternativa 4 \n";
-		listaQuestoesRespostas[1][1] = "2";
-		listaQuestoesRespostas[1][2] = "3";
-		listaQuestoesRespostas[1][3] = "4";
-		listaQuestoesRespostas[1][4] = "5";
-		listaQuestoesRespostas[1][5] = "6";
-		listaQuestoesRespostas[1][6] = "7";
-		listaQuestoesRespostas[1][7] = "8";
-		listaQuestoesRespostas[1][8] = "9";
-		listaQuestoesRespostas[1][9] = "10";
-
+		"A) int 1 \n" + /*correta */
+		"B) float 2 \n" + 
+		"C) double 3 \n" + 
+		"D) String 4 \n";
+		listaQuestoesRespostas[1][1] = 
+		"A)  4 \n" + 
+		"B)  5\n" + /*correta*/
+		"C)  6 \n" + 
+		"D)  O código resultará em um erro de compilação \n";
+		listaQuestoesRespostas[1][2] = 
+		"A)  class \n" +/*correta*/
+		"B)  public \n" + 
+		"C)  static \n" + 
+		"D)  void\n";
+		listaQuestoesRespostas[1][3] = 
+		"A)  if \n" + 
+		"B)  switch \n" + 
+		"C)  while \n" + 
+		"D)  for \n";/*correta*/
+		listaQuestoesRespostas[1][4] = 
+		"A)  Imprime o nome 'João' \n" + 
+		"B)  Retorna o tamanho do nome 'João' \n" + /*correta*/
+		"C)  Retorna a posição da letra 'o' no nome 'João' \n" + 
+		"D)  O código resultará em um erro de compilação \n";
+		listaQuestoesRespostas[1][5] = 
+		"A)  int[] numeros = new int[5];\n" + /*correta*/
+		"B)  int[] numeros = {1, 2, 3, 4, 5}; \n" + 
+		"C)  int numeros[] = new int[5]; \n" + 
+		"D)  int numeros[] = {1, 2, 3, 4, 5}; \n";
+		listaQuestoesRespostas[1][6] = 
+		"A)  Calcula o valor absoluto de -10\n" + /*correta */
+		"B)  Calcula a raiz quadrada de -10 \n" + 
+		"C)  Calcula o seno de -10 \n" + 
+		"D)  O código resultará em um erro de compilação \n";
+		listaQuestoesRespostas[1][7] = 
+		"A)  // Este é um comentário\n" + 
+		"B)  /* Este é um comentário / \n" + /*correta*/
+		"C)  // Este é um comentário / \n" + 
+		"D)  /* Este é um comentário // \n";
+		listaQuestoesRespostas[1][8] = 
+		"A)  MinhaClasse.metodo();\n" +		/*correta*/								
+		"B)  metodo.MinhaClasse();\n" + 
+		"C)  MinhaClasse.metodo; \n" + 
+		"D)  metodo.MinhaClasse; \n";
+		
+		listaQuestoesRespostas[1][9] = 
+		"A) 1 2 3 4 5\n" + /*correto*/
+		"B) 5 4 3 2 1\n" + 
+		"C) 1 1 1 1 1\n" + 
+		"D) O código resultará em um erro de compilação\n";
 		// VALOR DAS QUESTÕES
 		listaQuestoesRespostas[2][0] = "1";
 		listaQuestoesRespostas[2][1] = "2";
