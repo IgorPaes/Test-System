@@ -1,13 +1,24 @@
 package projetoPI;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Program {
 
-	static int recebeLimpa() {
+	static int recebeLimpaInt() {
 		
-		Scanner scanner = new Scanner(System.in); 
-		int retornoDoScanner = scanner.nextInt(); 
+		Scanner scan = new Scanner(System.in); 
+		int retornoDoScanner = scan.nextInt(); 
+
+		System.out.print("\033\143");
+
+		return retornoDoScanner;
+	}
+
+	static double recebeLimpaDouble() {
+		
+		Scanner scan = new Scanner(System.in); 
+		double retornoDoScanner = scan.nextDouble(); 
 
 		System.out.print("\033\143");
 
@@ -36,7 +47,7 @@ public class Program {
 		System.out.println("Digite a senha!");
 		System.out.printf("SENHA: %d\n", senha);
 		System.out.printf("\nDigite: ");
-		int senhaDigitada = recebeLimpa();
+		int senhaDigitada = recebeLimpaInt();
 
 		for(int tentativas = 1; tentativas < (maxTentativasSenha + 1); tentativas++) {
 							 
@@ -65,7 +76,7 @@ public class Program {
 	
 				}
 
-				senhaDigitada = recebeLimpa();
+				senhaDigitada = recebeLimpaInt();
 
 			}
 			
@@ -85,14 +96,14 @@ public class Program {
 				System.out.println("***         MENU DE EDIÇÃO DA PROVA!          ***");
 				System.out.println("+-----------------------------------------------+");
 				System.out.println("1) QUANTIDADE DE QUESTÕES");
-				System.out.println("2) VALOR DAS QUESTÕES");
+				System.out.println("2) VER VALORES DAS QUESTÕES");
 				System.out.println("3) MODO DE QUESTÕES ALEATÓRIAS");
 				System.out.println("4) NÚMERO DE TENTATIVAS");
 				System.out.println("+-----------------------------------------------+");
 				System.out.println("0) SALVAR E VOLTAR");
 				System.out.println("+-----------------------------------------------+");
 	
-				numeroEscolhidoProfessor = recebeLimpa();
+				numeroEscolhidoProfessor = recebeLimpaInt();
 	
 			}while(numeroEscolhidoProfessor < 0 || numeroEscolhidoProfessor > 4);	
 			
@@ -103,14 +114,18 @@ public class Program {
 		}
 
 		int qtdQuestoes = 0;
-
+		
 		switch(numeroEscolhidoProfessor) {
 			case 1:
 				qtdQuestoes = quantidadeQuestoes();
 			break;
 
 			case 2:
-				controleValorQuestoes();	
+				if(qtdQuestoes == 0) {
+					controleValorQuestoes(10);			
+				}else {
+					controleValorQuestoes(qtdQuestoes);	
+				}
 			break;
 
 			case 3:
@@ -146,7 +161,7 @@ public class Program {
 			System.out.println("Digite 1 para continuar ou 0 para voltar ao menu de edição:");
 			System.out.println("1) Alterar Resposta");
 			System.out.println("0) Voltar Menu");
-			digitoVoltarContinuar = recebeLimpa();
+			digitoVoltarContinuar = recebeLimpaInt();
 
 		}while(digitoVoltarContinuar != 1 && digitoVoltarContinuar != 0);
 
@@ -168,11 +183,11 @@ public class Program {
 		// String listaGeral[][] = geralQuestoes(qtdQuestoes);
 
 	}
+	
+	static String[][] questoesProva() {
 
-	static String[][] geralQuestoes(int qtdQuestoes) {
-
-		String listaQuestoesRespostas[][] = new String[3][qtdQuestoes];
-
+		String listaQuestoesRespostas[][] = new String[2][10];
+		
 		// PERGUNTAS
 		listaQuestoesRespostas[0][0] = "Questão  : Qual dos seguintes tipos de dados em Java representa números inteiros sem casas decimais?";
 		listaQuestoesRespostas[0][1] = "Questão  : Qual é a saída deste código Java?\n int x = 5;\nSystem.out.println(x++);";
@@ -194,61 +209,49 @@ public class Program {
 		"D) String 4 \n";
 		listaQuestoesRespostas[1][1] = 
 		"A)  4 \n" + 
-		"B)  5\n" + /*correta*/
+		"B)  5 \n" + /*correta*/
 		"C)  6 \n" + 
 		"D)  O código resultará em um erro de compilação \n";
 		listaQuestoesRespostas[1][2] = 
-		"A)  class \n" +/*correta*/
+		"A)  class \n" + /*correta*/
 		"B)  public \n" + 
 		"C)  static \n" + 
-		"D)  void\n";
+		"D)  void \n";
 		listaQuestoesRespostas[1][3] = 
 		"A)  if \n" + 
 		"B)  switch \n" + 
 		"C)  while \n" + 
-		"D)  for \n";/*correta*/
+		"D)  for \n"; /*correta*/
 		listaQuestoesRespostas[1][4] = 
 		"A)  Imprime o nome 'João' \n" + 
 		"B)  Retorna o tamanho do nome 'João' \n" + /*correta*/
 		"C)  Retorna a posição da letra 'o' no nome 'João' \n" + 
 		"D)  O código resultará em um erro de compilação \n";
 		listaQuestoesRespostas[1][5] = 
-		"A)  int[] numeros = new int[5];\n" + /*correta*/
+		"A)  int[] numeros = new int[5]; \n" + /*correta*/
 		"B)  int[] numeros = {1, 2, 3, 4, 5}; \n" + 
 		"C)  int numeros[] = new int[5]; \n" + 
 		"D)  int numeros[] = {1, 2, 3, 4, 5}; \n";
 		listaQuestoesRespostas[1][6] = 
-		"A)  Calcula o valor absoluto de -10\n" + /*correta */
+		"A)  Calcula o valor absoluto de -10 \n" + /*correta */
 		"B)  Calcula a raiz quadrada de -10 \n" + 
 		"C)  Calcula o seno de -10 \n" + 
 		"D)  O código resultará em um erro de compilação \n";
 		listaQuestoesRespostas[1][7] = 
-		"A)  // Este é um comentário\n" + 
+		"A)  // Este é um comentário \n"   + 
 		"B)  /* Este é um comentário / \n" + /*correta*/
 		"C)  // Este é um comentário / \n" + 
 		"D)  /* Este é um comentário // \n";
 		listaQuestoesRespostas[1][8] = 
-		"A)  MinhaClasse.metodo();\n" +		/*correta*/								
-		"B)  metodo.MinhaClasse();\n" + 
+		"A)  MinhaClasse.metodo(); \n" + /*correta*/								
+		"B)  metodo.MinhaClasse(); \n" + 
 		"C)  MinhaClasse.metodo; \n" + 
 		"D)  metodo.MinhaClasse; \n";
-		
 		listaQuestoesRespostas[1][9] = 
-		"A) 1 2 3 4 5\n" + /*correto*/
-		"B) 5 4 3 2 1\n" + 
-		"C) 1 1 1 1 1\n" + 
+		"A) 1 2 3 4 5 \n" + /*correto*/
+		"B) 5 4 3 2 1 \n" + 
+		"C) 1 1 1 1 1 \n" + 
 		"D) O código resultará em um erro de compilação\n";
-		// VALOR DAS QUESTÕES
-		listaQuestoesRespostas[2][0] = "1";
-		listaQuestoesRespostas[2][1] = "2";
-		listaQuestoesRespostas[2][2] = "0.50";
-		listaQuestoesRespostas[2][3] = "1";
-		listaQuestoesRespostas[2][4] = "0.50";
-		listaQuestoesRespostas[2][5] = "2";
-		listaQuestoesRespostas[2][6] = "0.75";
-		listaQuestoesRespostas[2][7] = "1";
-		listaQuestoesRespostas[2][8] = "0.25";
-		listaQuestoesRespostas[2][9] = "1";
 
 		return listaQuestoesRespostas;
 	}
@@ -258,38 +261,79 @@ public class Program {
 		int qtdQuestoes = 0;
 
 		System.out.println("Digite a quantidade de questões de 1 a 10");
-		qtdQuestoes = recebeLimpa();
+		qtdQuestoes = recebeLimpaInt();
 
 		while(qtdQuestoes < 1 || qtdQuestoes > 10){
 
 			System.out.println("Opção invalida! digite um valor entre 1 e 10");
-			qtdQuestoes = recebeLimpa();
+			qtdQuestoes = recebeLimpaInt();
 
 		}
 			
 		return qtdQuestoes;
 	}
 
-	static double[] controleValorQuestoes() {
+	static void controleValorQuestoes(int qtdQuestoes) {
+		
+		Random random = new Random();
 
+		Float listaValoresQuestoes[] = new Float[qtdQuestoes];
+		
+		byte valorMaxProva = 10;
+		byte somaValorQuestoes = 0;
 
-		double controleValorQuestoes[] = new double[10];
-		double somaValorQuestoes = 0;
-
-		for(int i = 0; i < controleValorQuestoes.length; i++) {
+		while(somaValorQuestoes != valorMaxProva) {
 			
-			System.out.printf("Digite a nota de questão de número %d \n", i + 1);
-			controleValorQuestoes[i] = recebeLimpa();
-			somaValorQuestoes += controleValorQuestoes[i];
+			byte controleSomaValores = 0;
 
+			for(int i = 0; i < qtdQuestoes; i++) {
+				
+				float notaQuestao = 0.25f + random.nextFloat(2);
+		
+				listaValoresQuestoes[i] = Math.round(notaQuestao * 10.0f) / 10.0f;
+				controleSomaValores += (byte) Math.round(listaValoresQuestoes[i]);
+				
+			}
+
+			somaValorQuestoes = controleSomaValores;
+			controleSomaValores = 0;
 		}
 
-		// if(somaValorQuestoes) {
-			
-		// }
-
-		return controleValorQuestoes;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	static void menuInicial() {
 
@@ -311,7 +355,7 @@ public class Program {
 			System.out.println("1) Professor");
 			System.out.println("2) Aluno");
 
-			numeroEscolhido = recebeLimpa();
+			numeroEscolhido = recebeLimpaInt();
 
 		}while(numeroEscolhido <= 0 || numeroEscolhido > 2);
 
