@@ -1,5 +1,6 @@
 package projetoPI;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -25,20 +26,34 @@ public class Program {
 		return retornoDoScanner;
 	}
 
+	static String recebeLimpaString() {
+		
+		Scanner scan = new Scanner(System.in); 
+		String retornoDoScanner = scan.nextLine(); 
+
+		System.out.print("\033\143");
+
+		return retornoDoScanner;
+	}
+
+	// ---
+
 	static void authTipoUsuario(int EscolhaTipousuario) {
 
 		switch(EscolhaTipousuario) {
+
 			case 1:
 				AuthSenhaProfessor();
 			break;
-
+			
 			case 2:
-				System.out.println("B");
+				AuthUsuarioAluno();
 			break;
+
 		}
 
 	}
-
+	
 	static void AuthSenhaProfessor() {
 
 		int senha = 123;
@@ -51,14 +66,14 @@ public class Program {
 
 		for(int tentativas = 1; tentativas < (maxTentativasSenha + 1); tentativas++) {
 							 
-			boolean SenhaCheck = senha == senhaDigitada;
+			boolean senhaCheck = senha == senhaDigitada;
 
-			if(SenhaCheck) {
+			if(senhaCheck) {
 	
 				menuProfessor(true, 0);
 				break;
 
-			}else if(!SenhaCheck && tentativas != maxTentativasSenha) {
+			}else if(!senhaCheck && tentativas != maxTentativasSenha) {
 
 				int erroTentativas = maxTentativasSenha - tentativas;
 
@@ -77,6 +92,61 @@ public class Program {
 				}
 
 				senhaDigitada = recebeLimpaInt();
+
+			}
+			
+		}
+
+	}
+
+	static void AuthUsuarioAluno() {
+
+		String nomeUsuario[] = {"JOAO", "ANDRÉ", "ERIKE", "GUILHERME", "IGOR", "VITOR"};
+
+		System.out.println("Lista de nomes: " + Arrays.toString(nomeUsuario) + "\n");
+		System.out.printf("Digite o seu nome: ");
+		String nomeAluno = recebeLimpaString().toUpperCase();
+
+		int maxTentativasSenha = 3;
+
+		for(int tentativas = 1; tentativas < (maxTentativasSenha + 1); tentativas++) {
+				
+			boolean usuarioCheck = false;
+
+			for(int i = 0; i < nomeUsuario.length; i++) {
+				
+				if(nomeAluno.equals(nomeUsuario[i])) {
+					
+					usuarioCheck = true;
+
+				}
+
+			}
+
+			if(usuarioCheck) {
+	
+				construtorProva();
+				break;
+
+			}else if(!usuarioCheck && tentativas != maxTentativasSenha) {
+
+				int erroTentativas = maxTentativasSenha - tentativas;
+
+				if(erroTentativas > 1) {
+
+					System.out.printf("Usuário incorreto, você possue mais %d tentavivas: \n", erroTentativas);
+					System.out.printf("Nomes da lista: " + Arrays.toString(nomeUsuario) + "\n");
+					System.out.printf("\nDigite: ");
+
+				}else {
+
+					System.out.printf("Usuário incorreto, você possue mais %d tentaviva: \n", erroTentativas);
+					System.out.printf("Nomes da lista: " + Arrays.toString(nomeUsuario) + "\n");
+					System.out.printf("\nDigite: ");
+	
+				}
+
+				nomeAluno = recebeLimpaString().toUpperCase();
 
 			}
 			
@@ -114,8 +184,7 @@ public class Program {
 		}
 
 		int qtdQuestoes = 0;
-		String listaQuestoesPronta[];
-		
+
 		switch(numeroEscolhidoProfessor) {
 			case 1:
 				qtdQuestoes = quantidadeQuestoes();
@@ -130,11 +199,11 @@ public class Program {
 			break;
 
 			case 3:
-				listaQuestoesPronta = AtivaDesativaQuestoesAleatorias();
+				AtivaDesativaQuestoesAleatorias();
 			break;
 
 			case 4:
-				
+				MaxTentativasAluno();
 			break;
 
 			case 0:
@@ -149,8 +218,6 @@ public class Program {
 
 		}
 
-		// construtorProva();
-
 	}
 	
 	static void voltarMenu(int numeroEscolhidoProfessor) {
@@ -158,10 +225,12 @@ public class Program {
 		int digitoVoltarContinuar;
 
 		do {
-
+			
+			System.out.println("+-----------------------------------------------+");
 			System.out.println("Digite 1 para continuar ou 0 para voltar ao menu de edição:");
 			System.out.println("1) Alterar Resposta");
 			System.out.println("0) Voltar Menu");
+			System.out.println("+-----------------------------------------------+");
 			digitoVoltarContinuar = recebeLimpaInt();
 
 		}while(digitoVoltarContinuar != 1 && digitoVoltarContinuar != 0);
@@ -175,79 +244,85 @@ public class Program {
 			menuProfessor(true, 0);
 
 		}
-		
 
 	}
 
-	static void construtorProva() {
-
-		// String listaGeral[][] = geralQuestoes(qtdQuestoes);
-
-	}
+	static String listaQuestoesRespostas[][] = new String[3][10];
 	
-	static String[] questoesProva() {
-
-		String listaQuestoesRespostas[] = new String[10];
+	static String[][] questoesProva() {
 		
-		listaQuestoesRespostas[0] = "Questão  : Qual dos seguintes tipos de dados em Java representa números inteiros sem casas decimais?" +
-		"A) int 1 \n" + /*correta */
+		listaQuestoesRespostas[0][0] = " : Qual dos seguintes tipos de dados em Java representa números inteiros sem casas decimais?";
+		listaQuestoesRespostas[0][1] = " : Qual é a saída deste código Java?\n int x = 5;\nSystem.out.println(x++);";
+		listaQuestoesRespostas[0][2] = " : Em Java, qual é a palavra-chave utilizada para definir uma classe?";
+		listaQuestoesRespostas[0][3] = " : Qual é a estrutura de controle em Java utilizada para repetir um bloco de código várias vezes?";
+		listaQuestoesRespostas[0][4] = " : O que o seguinte código Java faz?\n String nome = 'João'\nSystem.out.println(nome.length())";
+		listaQuestoesRespostas[0][5] = " : Em Java, qual é a forma correta de declarar um array de inteiros chamado 'numeros' com tamanho 5?";
+		listaQuestoesRespostas[0][6] = " : O que o seguinte código Java faz?\nint resultado = Math.abs(-10);\nSystem.out.println(resultado);";
+		listaQuestoesRespostas[0][7] = " : Qual é a forma correta de escrever um comentário de várias linhas em Java?";
+		listaQuestoesRespostas[0][8] = " : Em Java, como você chama um método de uma classe 'MinhaClasse'?";
+		listaQuestoesRespostas[0][9] = " : Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\nSystem.out.print(numeros[i] + ' ')\n}";
+
+		listaQuestoesRespostas[1][0] =
+		"A) String 4 \n"+
 		"B) float 2 \n" + 
 		"C) double 3 \n" + 
-		"D) String 4 \n";
-		
-		listaQuestoesRespostas[1] = "Questão  : Qual é a saída deste código Java?\n int x = 5;\nSystem.out.println(x++);" +
-		"A)  4 \n" + 
-		"B)  5 \n" + /*correta*/
+		"D) int 1 \n" ;
+		listaQuestoesRespostas[1][1] =
+        "A)  4 \n" +
+		"B)  5 \n" +
 		"C)  6 \n" + 
 		"D)  O código resultará em um erro de compilação \n";
-		
-		listaQuestoesRespostas[2] = "Questão  : Em Java, qual é a palavra-chave utilizada para definir uma classe?" +
-		"A)  class \n" + /*correta*/
+		listaQuestoesRespostas[1][2] = 
+		"A)  class \n" +
 		"B)  public \n" + 
 		"C)  static \n" + 
 		"D)  void \n";
-		
-		listaQuestoesRespostas[3] = "Questão  : Qual é a estrutura de controle em Java utilizada para repetir um bloco de código várias vezes?" +
+		listaQuestoesRespostas[1][3] =
 		"A)  if \n" + 
 		"B)  switch \n" + 
-		"C)  while \n" + 
-		"D)  for \n"; /*correta*/
-		
-		listaQuestoesRespostas[4] = "Questão  : O que o seguinte código Java faz?\n String nome = 'João'\nSystem.out.println(nome.length())" +
+		"C)  for \n"+
+		"D)  while \n"; 
+		listaQuestoesRespostas[1][4] =
 		"A)  Imprime o nome 'João' \n" + 
-		"B)  Retorna o tamanho do nome 'João' \n" + /*correta*/
+		"B)  Retorna o tamanho do nome 'João' \n" +
 		"C)  Retorna a posição da letra 'o' no nome 'João' \n" + 
 		"D)  O código resultará em um erro de compilação \n";
-		
-		listaQuestoesRespostas[5] = "Questão  : Em Java, qual é a forma correta de declarar um array de inteiros chamado 'numeros' com tamanho 5?" +
-		"A)  int[] numeros = new int[5]; \n" + /*correta*/
+		listaQuestoesRespostas[1][5] =
+		"A)  int[] numeros = new int[5]; \n" +
 		"B)  int[] numeros = {1, 2, 3, 4, 5}; \n" + 
 		"C)  int numeros[] = new int[5]; \n" + 
 		"D)  int numeros[] = {1, 2, 3, 4, 5}; \n";
-		
-		listaQuestoesRespostas[6] = "Questão  : O que o seguinte código Java faz?\nint resultado = Math.abs(-10);\nSystem.out.println(resultado);" +
-		"A)  Calcula o valor absoluto de -10 \n" + /*correta */
+		listaQuestoesRespostas[1][6] =
+		"A)   O código resultará em um erro de compilação \n"+
 		"B)  Calcula a raiz quadrada de -10 \n" + 
-		"C)  Calcula o seno de -10 \n" + 
-		"D)  O código resultará em um erro de compilação \n";
-		
-		listaQuestoesRespostas[7] = "Questão  : Qual é a forma correta de escrever um comentário de várias linhas em Java?" +
+		"C)  Calcula o seno de -10 \n" +
+		"D)  Calcula o valor absoluto de -10 \n";  
+		listaQuestoesRespostas[1][7] =
 		"A)  // Este é um comentário \n"   + 
-		"B)  /* Este é um comentário / \n" + /*correta*/
+		"B)  /* Este é um comentário / \n" +
 		"C)  // Este é um comentário / \n" + 
 		"D)  /* Este é um comentário // \n";
-		
-		listaQuestoesRespostas[8] = "Questão  : Em Java, como você chama um método de uma classe 'MinhaClasse'?" +
-		"A)  MinhaClasse.metodo(); \n" + /*correta*/								
+		listaQuestoesRespostas[1][8] =
+		"A)  MinhaClasse.metodo(); \n" +								
 		"B)  metodo.MinhaClasse(); \n" + 
 		"C)  MinhaClasse.metodo; \n" + 
 		"D)  metodo.MinhaClasse; \n";
-		
-		listaQuestoesRespostas[9] = "Questão  : Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\nSystem.out.print(numeros[i] + ' ')\n}" +
-		"A) 1 2 3 4 5 \n" + /*correto*/
+		listaQuestoesRespostas[1][9] =
+		"A) O código resultará em um erro de compilação \n" + 
 		"B) 5 4 3 2 1 \n" + 
-		"C) 1 1 1 1 1 \n" + 
-		"D) O código resultará em um erro de compilação\n";
+		"C) 1 1 1 1 1 \n" +
+		"D) 1 2 3 4 5 \n";
+
+		listaQuestoesRespostas[2][0] = "D";
+		listaQuestoesRespostas[2][1] = "B";
+		listaQuestoesRespostas[2][2] = "A";
+		listaQuestoesRespostas[2][3] = "C";
+		listaQuestoesRespostas[2][4] = "B";
+		listaQuestoesRespostas[2][5] = "A";
+		listaQuestoesRespostas[2][6] = "D";
+		listaQuestoesRespostas[2][7] = "B";
+		listaQuestoesRespostas[2][8] = "A";
+		listaQuestoesRespostas[2][9] = "D";
 
 		return listaQuestoesRespostas;
 	}
@@ -297,58 +372,76 @@ public class Program {
 
 	}
 
-	static String[] AtivaDesativaQuestoesAleatorias() {
+	static void AtivaDesativaQuestoesAleatorias() {
 
-		String listaQuestoesOriginal[] = questoesProva();
+		String listaQuestoesOriginal[][] = questoesProva();
 
-		boolean btnAtivo = true;
+		boolean btnAtivo = false;
 		int numeroEscolhido;
 
 		do {
 				
-			System.out.println("As questões estão organizadas de forma aleatoria.");
-			System.out.println("Digite 1 para DESATIVAR o modo de questões aleatórias.");
-			System.out.println("1) Desativar");
-			System.out.println("2) Manter Ativa");
+			System.out.println("As questões estão organizadas de forma organica.");
+			System.out.println("Digite 1 para ATIVAR o modo de questões aleatórias.");
+			System.out.println("1) Ativar");
+			System.out.println("2) Manter Desativada");
 			numeroEscolhido = recebeLimpaInt();
 			
 		}while(numeroEscolhido <= 0 || numeroEscolhido > 2);
 
 		if(numeroEscolhido == 1) {
 			
-			btnAtivo = false;
+			btnAtivo = true;
 
 		}
 
-		String listaQuestoesPronta[] = AleatorizarQuestoes(btnAtivo, listaQuestoesOriginal);
-		
-		return listaQuestoesPronta;
+		AleatorizarQuestoes(btnAtivo, listaQuestoesOriginal);
+
 	}
 
-	static String[] AleatorizarQuestoes(boolean ativadaDesativada, String listaQuestoesOriginal[]) {
-
-		String listaQuestoesPronta[] = new String[10];
-		
+	static void AleatorizarQuestoes(boolean ativadaDesativada, String listaQuestoesOriginal[][]) {
 
 		if(ativadaDesativada) {
 
 			Random random = new Random();
-			int embaralharQuestoes = 1 + random.nextInt(9);
-			
-			for(int i = 0; i < listaQuestoesOriginal.length; i++) {
+			int posicaoAtual = listaQuestoesOriginal.length - 1;
 
-				listaQuestoesOriginal[i];
+			while(posicaoAtual > -1) {
+				
+				int indiceAleatorio = random.nextInt(posicaoAtual + 1);
+				String temp;
 
+				temp = listaQuestoesOriginal[0][posicaoAtual];
+				listaQuestoesOriginal[0][posicaoAtual] = listaQuestoesOriginal[0][indiceAleatorio];
+				listaQuestoesOriginal[0][indiceAleatorio] = temp;
+
+				temp = listaQuestoesOriginal[1][posicaoAtual];
+				listaQuestoesOriginal[1][posicaoAtual] = listaQuestoesOriginal[1][indiceAleatorio];
+				listaQuestoesOriginal[1][indiceAleatorio] = temp;
+
+				temp = listaQuestoesOriginal[2][posicaoAtual];
+				listaQuestoesOriginal[2][posicaoAtual] = listaQuestoesOriginal[2][indiceAleatorio];
+				listaQuestoesOriginal[2][indiceAleatorio] = temp;
+
+				posicaoAtual--;
 			}
 
-		}else {
-
-			
-
 		}
-			
 		
-		return listaQuestoesPronta;
+	}
+
+	static int MaxTentativasAluno() {
+
+		System.out.println("Digite o maximo de tentativas do aluno:");
+	    int maxTentativas = recebeLimpaInt();
+
+		return maxTentativas;  
+	}
+
+	static void construtorProva() {
+
+		
+
 	}
 
 	static void menuInicial() {
@@ -380,6 +473,7 @@ public class Program {
 
 	public static void main(String[] args) {
 
+		questoesProva();
 		menuInicial(); // :) 
 
 	}
