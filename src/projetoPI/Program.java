@@ -100,8 +100,8 @@ public class Program {
 	}
 
 	static void AuthUsuarioAluno() {
-
-		String nomeUsuario[] = {"JOAO", "ANDRÉ", "ERIKE", "GUILHERME", "IGOR", "VITOR"};
+	
+		String nomeUsuario[] = {"Pedro", "Julio", "Erike", "Guilherme", "Igor", "Vitor", "Victor"};
 
 		System.out.println("Lista de nomes: " + Arrays.toString(nomeUsuario) + "\n");
 		System.out.printf("Digite o seu nome: ");
@@ -114,8 +114,8 @@ public class Program {
 			boolean usuarioCheck = false;
 
 			for(int i = 0; i < nomeUsuario.length; i++) {
-				
-				if(nomeAluno.equals(nomeUsuario[i])) {
+
+				if(nomeAluno.equals(nomeUsuario[i].toUpperCase())) {
 					
 					usuarioCheck = true;
 
@@ -125,7 +125,7 @@ public class Program {
 
 			if(usuarioCheck) {
 	
-				construtorProva();
+				organizadorProva(nomeAluno);
 				break;
 
 			}else if(!usuarioCheck && tentativas != maxTentativasSenha) {
@@ -154,7 +154,7 @@ public class Program {
 
 	}
 
-	static void menuProfessor(boolean altResposta, int numeroEscolhido) {
+	 static void menuProfessor(boolean altResposta, int numeroEscolhido) {
 										
 		int numeroEscolhidoProfessor = 0;
 		
@@ -344,12 +344,18 @@ public class Program {
 		return qtdQuestoes;
 	}
 
+	static Float[] listaValoresQuestoes = {1f,1f,1f,1f,1f,1f,1f,1f,1f};
+	
 	static void controleValorQuestoes(int qtdQuestoes) {
+
+		listaValoresQuestoes = new Float[qtdQuestoes];
 		
+		for (int i = 0; i < listaValoresQuestoes.length; i++) {
+			System.out.println(listaValoresQuestoes[i]);
+		}
+
 		Random random = new Random();
 
-		Float listaValoresQuestoes[] = new Float[qtdQuestoes];
-		
 		byte valorMaxProva = 10;
 		byte somaValorQuestoes = 0;
 
@@ -438,7 +444,28 @@ public class Program {
 		return maxTentativas;  
 	}
 
-	static void construtorProva() {
+	static void organizadorProva(String nomeAluno) {
+
+		int notaMaximaProva = 0;
+		int notaAluno = 0;
+
+
+		mostrarProva();
+	}
+
+	static void mostrarProva() {
+
+		
+
+	}
+
+	static void calculosProva() {
+
+		
+
+	}
+
+	static void mostraFimProva() {
 
 		
 
