@@ -351,31 +351,35 @@ public class Program {
 	static float[] controleValorQuestoes(int qtdQuestoes) {
 
 		float listaValoresQuestoes[] = new float[qtdQuestoes];
+		float listaValoresPossiveis[] = {0.25f,0.50f,0.75f,1.0f,1.25f,1.50f,1.75f,2.0f};
 
 		Random random = new Random();
 
 		byte valorMaxProva = 10;
 		byte somaValorQuestoes = 0;
 
-		while(somaValorQuestoes != valorMaxProva) {
+		while(valorMaxProva != somaValorQuestoes) {
 			
 			byte controleSomaValores = 0;
 
 			for(int i = 0; i < qtdQuestoes; i++) {
-				
-				float notaQuestao = 0.25f + random.nextFloat(2);
-		
-				listaValoresQuestoes[i] = Math.round(notaQuestao * 10.0f) / 10.0f;
-				controleSomaValores += (byte) Math.round(listaValoresQuestoes[i]);
-				
-			}
 
+				int posicaoValor = random.nextInt(listaValoresPossiveis.length);
+				
+				listaValoresQuestoes[i] = listaValoresPossiveis[posicaoValor];
+				controleSomaValores += listaValoresQuestoes[i];
+
+			}
+			
 			somaValorQuestoes = controleSomaValores;
 			controleSomaValores = 0;
+			
 		}
-		// resolver o problema deste fOR NÃO FUNCIONAR
+		System.out.println(somaValorQuestoes);
+
 		for (int i = 0; i < listaValoresQuestoes.length; i++) {
-			System.out.println(listaValoresQuestoes[i]);
+			System.out.println("----------------------------------------------------------");
+			System.out.printf("Valor da questão %d: %.2f\n", i + 1,listaValoresQuestoes[i]);
 		}
 
 		return listaValoresQuestoes;
