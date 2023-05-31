@@ -36,8 +36,6 @@ public class Program {
 		return retornoDoScanner;
 	}
 
-	// ---
-
 	static void authTipoUsuario(int EscolhaTipousuario) {
 
 		switch(EscolhaTipousuario) {
@@ -125,7 +123,7 @@ public class Program {
 
 			if(usuarioCheck) {
 	
-				organizadorProva(nomeAluno);
+				menuInicialProva(nomeAluno);
 				break;
 
 			}else if(!usuarioCheck && tentativas != maxTentativasSenha) {
@@ -169,7 +167,7 @@ public class Program {
 				System.out.println("***         MENU DE EDIÇÃO DA PROVA!          ***");
 				System.out.println("+-----------------------------------------------+");
 				System.out.println("1) QUANTIDADE DE QUESTÕES");
-				System.out.println("2) VER VALORES DAS QUESTÕES");
+				System.out.println("2) GERAR OS VALORES DAS QUESTÕES");
 				System.out.println("3) MODO DE QUESTÕES ALEATÓRIAS");
 				System.out.println("4) NÚMERO DE TENTATIVAS");
 				System.out.println("+-----------------------------------------------+");
@@ -206,7 +204,7 @@ public class Program {
 			break;
 
 			case 4:
-				MaxTentativasAluno();
+				maxTentativasAluno();
 			break;
 
 			case 0:
@@ -375,11 +373,12 @@ public class Program {
 			controleSomaValores = 0;
 			
 		}
-		System.out.println(somaValorQuestoes);
 
 		for (int i = 0; i < listaValoresQuestoes.length; i++) {
+			
 			System.out.println("----------------------------------------------------------");
 			System.out.printf("Valor da questão %d: %.2f\n", i + 1,listaValoresQuestoes[i]);
+		
 		}
 
 		return listaValoresQuestoes;
@@ -445,7 +444,7 @@ public class Program {
 		return listaQuestoesOriginal;
 	}
 
-	static int MaxTentativasAluno() {
+	static int maxTentativasAluno() {
 
 		System.out.println("Digite o maximo de tentativas do aluno:");
 	    int maxTentativas = recebeLimpaInt();
@@ -455,48 +454,125 @@ public class Program {
 
 	static void organizadorProva(String nomeAluno) {
 
-		float listaValoresQuestoesParaUso[];
 		String listaQuestoesParaUso[][];
+		float listaValoresQuestoesParaUso[];
+		
+		if(listaQuestoesProntas[0][0] == null) {
+			
+			listaQuestoesParaUso = questoesProva();
+			
+		}else {
+			
+			listaQuestoesParaUso = listaQuestoesProntas;
+			
+		}
 
-		int notaMaximaProva = 10;
-		int notaAluno = 0;
-
-		// aRRUMAR ESTE PRIMEIRO if
 		if(listaValoresQuestoesRetornada == null) {
 			
 			listaValoresQuestoesParaUso = new float[]{1f,1f,1f,1f,1f,1f,1f,1f,1f,1f};
-			System.out.println("A");
+
 		}else {
 
 			listaValoresQuestoesParaUso = listaValoresQuestoesRetornada;
-			System.out.println("B");
+		
 		}
 
-		if(listaQuestoesProntas[0][0] == null) {
+		mostrarProva(nomeAluno, listaQuestoesParaUso, listaValoresQuestoesParaUso);
+	}
+
+	static void menuInicialProva(String nomeAluno) {
+
+		// int escolhaMenu;
+
+		// do {
+
+		// 	System.out.printf("(%s) Digite 1 para iniciar ou 0 para queimar a prova:\n", nomeAluno);
+		// 	System.out.println("1) INICIAR");
+		// 	System.out.println("2) QUEIMAR");
+		// 	escolhaMenu = recebeLimpaInt();
+
+		// }while(escolhaMenu <= 0 || escolhaMenu > 2);
+
+		// switch(escolhaMenu) {
+
+		// 	case 1:
+		// 		organizadorProva(nomeAluno);
+		// 	break;
 		
-			listaQuestoesParaUso = questoesProva();
+		// 	case 2:
+		// 		System.out.println("ANIMAL! ERA MEME, NÃO QUER FAZER A PROVA ENTÃO RECEBA ESSA DP AI!");
+		// 	break;
+
+		// }
+		organizadorProva(nomeAluno);
+
+	}
+
+	static void mostrarProva(String nomeAluno, String matrizQuestoes[][], float vetorValoresQuestoes[]) {
+
+		System.out.println("-----------------------------------------------------");
+		System.out.println("RECEBA ESSA PROVA COM QUESTÕES GENÊNICAS SOBRE JAVA.");
+		System.out.println("----------------------- REGAS -----------------------");
+		System.out.printf("1 - %s É A PRIMEIRA REGRA DO CLUBE DA LUTA;\n", nomeAluno);
+		System.out.printf("2 - %s NÃO PODE COLAR, ANIMAL!;\n", nomeAluno);
+		System.out.printf("3 - %s IGNORAR TODA ESTA ABA DE REGRAS;\n", nomeAluno);
+		System.out.printf("4 - %s ESSA AQUI É SÓ PARA PARECER QUE TEM MAIS REGRAS!\n", nomeAluno);
+		System.out.printf("5 - %s E ESSA É SÓ PARA VOCÊ LER MESMO!\n", nomeAluno);
+		System.out.println("-----------------------------------------------------\n");
+
+
+		for(int coluna = 0; coluna < matrizQuestoes[0].length; coluna++) {
+			
+			String respostaQuestao;
+
+			System.out.println(matrizQuestoes[0][coluna]);
+			System.out.println(matrizQuestoes[1][coluna]);
+			System.out.printf("Resposta: ");
+			respostaQuestao = recebeLimpaString().toUpperCase();
+			
+			checarRespostaMostrar(respostaQuestao, matrizQuestoes, coluna);
+
+		}
+		// System.out.print("\033\143");
 		
+
+	}
+
+	static void acertouErrou(boolean acertouErrou, int numbQuestao) {
+
+		if(acertouErrou) {
+			System.out.println("-----------------------");
+			System.out.printf("RESPOSTA DA QUESTÃO %d\n", numbQuestao + 1);
+			System.out.println("***    CORRETA!    ***");
+			System.out.println("-----------------------");
 		}else {
 
-			listaQuestoesParaUso = listaQuestoesProntas;
+			System.out.println("----------------------");
+			System.out.printf("RESPOSTA DA QUESTÃO %d\n", numbQuestao + 1);
+			System.err.println("***    ERRADA!    ***");
+			System.out.println("----------------------");
 
 		}
 
-		
-
-
-		mostrarProva();
 	}
 
-	static void mostrarProva() {
+	static void checarRespostaMostrar(String respostaQuestao, String matrizQuestoes[][], int coluna) {
 
-		
+		boolean acertouErrou = false;
 
+		if(respostaQuestao.equals(matrizQuestoes[2][coluna])) {
+			
+			acertouErrou = true;
+
+		}
+
+		acertouErrou(acertouErrou, coluna);
 	}
 
-	static void calculosProva() {
+	static void calculaNotaProva() {
 
-		
+		int notaMaximaProva = 10;
+		int notaAluno = 0;
 
 	}
 
@@ -519,7 +595,7 @@ public class Program {
 			System.out.println("|                                               |");
 			System.out.println("+-----------------------------------------------+\n");
 			
-			System.out.println("****** Prova de Lógica a Programação (JAVA) ******\n");
+			System.out.println("****** CONTEÚDO DA PROVA: JAVA ******\n");
 
 			System.out.println("Selecione a opção correspondente:");
 
