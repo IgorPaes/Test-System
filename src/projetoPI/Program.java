@@ -520,6 +520,7 @@ public class Program {
 		System.out.printf("5 - %s E ESSA É SÓ PARA VOCÊ LER MESMO!\n", nomeAluno);
 		System.out.println("-----------------------------------------------------\n");
 
+		int qtdAcertos;
 
 		for(int coluna = 0; coluna < matrizQuestoes[0].length; coluna++) {
 			
@@ -530,21 +531,25 @@ public class Program {
 			System.out.printf("Resposta: ");
 			respostaQuestao = recebeLimpaString().toUpperCase();
 			
-			checarRespostaMostrar(respostaQuestao, matrizQuestoes, coluna);
+			qtdAcertos = checarRespostaMostrar(respostaQuestao, matrizQuestoes, coluna, vetorValoresQuestoes);
 
 		}
-		// System.out.print("\033\143");
-		
+		System.out.print("\033\143");
+		// FAZER COM QUE SE O CARA ACERTOU, A MESMA POSIÇÃO QUE O FOR DA PERGUNTA QUE ELE ACERTOU
+		// SEJÁ ENTREGUE A OUTRO FOR PARA PEGAR O VALOR DA NOTA DO CARA
+
 
 	}
 
 	static void acertouErrou(boolean acertouErrou, int numbQuestao) {
 
 		if(acertouErrou) {
+
 			System.out.println("-----------------------");
 			System.out.printf("RESPOSTA DA QUESTÃO %d\n", numbQuestao + 1);
 			System.out.println("***    CORRETA!    ***");
 			System.out.println("-----------------------");
+		
 		}else {
 
 			System.out.println("----------------------");
@@ -556,34 +561,37 @@ public class Program {
 
 	}
 
-	static void checarRespostaMostrar(String respostaQuestao, String matrizQuestoes[][], int coluna) {
+	static int checarRespostaMostrar(String respostaQuestao, String matrizQuestoes[][], int coluna, float vetorValoresQuestoes[]) {
 
 		boolean acertouErrou = false;
+		int qtdAcertos = 0;
 
 		if(respostaQuestao.equals(matrizQuestoes[2][coluna])) {
 			
+			calcularNotaAluno(coluna, vetorValoresQuestoes);
 			acertouErrou = true;
+			qtdAcertos++;
 
 		}
 
 		acertouErrou(acertouErrou, coluna);
+		return qtdAcertos;
 	}
 
-	static void calculaNotaProva() {
+	static float calcularNotaAluno(int coluna, float vetorValoresQuestoes[]) {
 
-		int notaMaximaProva = 10;
-		int notaAluno = 0;
+		float notaAluno = 0;
 
-	}
+		float notaRecebidaQuestao = vetorValoresQuestoes[coluna];
+		notaAluno += notaRecebidaQuestao;
 
-	static void mostraFimProva() {
+		// ARRUMAR AQUI NÃO SE ESTÁ PRONTO
 
-		
-
+		return notaAluno;
 	}
 
 	static void menuInicial() {
-
+	
 		int numeroEscolhido;
 
 		do {
@@ -606,12 +614,12 @@ public class Program {
 
 		}while(numeroEscolhido <= 0 || numeroEscolhido > 2);
 
+		questoesProva();
 		authTipoUsuario(numeroEscolhido);
 	}
 
 	public static void main(String[] args) {
 
-		questoesProva();
 		menuInicial(); // :) 
 
 	}
