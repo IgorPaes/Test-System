@@ -135,15 +135,15 @@ public class Program {
 				if(erroTentativas > 1) {
 
 					System.out.printf("Usuário incorreto, você possue mais %d tentavivas: \n", erroTentativas);
-					System.out.printf("Nomes da lista: " + Arrays.toString(nomeUsuario) + "\n");
+					System.out.println("Nomes da lista: " + Arrays.toString(nomeUsuario));
 					System.out.printf("\nDigite: ");
 
 				}else {
 
 					System.out.printf("Usuário incorreto, você possue mais %d tentaviva: \n", erroTentativas);
-					System.out.printf("Nomes da lista: " + Arrays.toString(nomeUsuario) + "\n");
+					System.out.println("Nomes da lista: " + Arrays.toString(nomeUsuario));
 					System.out.printf("\nDigite: ");
-	
+
 				}
 
 				nomeAluno = recebeLimpaString().toUpperCase();
@@ -154,8 +154,11 @@ public class Program {
 
 	}
 
-	 static void menuProfessor(boolean altResposta, int numeroEscolhido) {
-										
+	static float listaValoresQuestoesRetornada[];
+	static String listaQuestoesProntas[][] = new String[3][10];
+
+	static void menuProfessor(boolean altResposta, int numeroEscolhido) {	
+
 		int numeroEscolhidoProfessor = 0;
 		
 		if(altResposta) {
@@ -192,14 +195,14 @@ public class Program {
 
 			case 2:
 				if(qtdQuestoes == 0) {
-					controleValorQuestoes(10);			
+					listaValoresQuestoesRetornada = controleValorQuestoes(10);			
 				}else {
-					controleValorQuestoes(qtdQuestoes);	
+					listaValoresQuestoesRetornada = controleValorQuestoes(qtdQuestoes);	
 				}
 			break;
 
 			case 3:
-				AtivaDesativaQuestoesAleatorias();
+				listaQuestoesProntas = ativaDesativaQuestoesAleatorias();
 			break;
 
 			case 4:
@@ -247,26 +250,27 @@ public class Program {
 
 	}
 
-	static String listaQuestoesRespostas[][] = new String[3][10];
 	
 	static String[][] questoesProva() {
 		
-		listaQuestoesRespostas[0][0] = " : Qual dos seguintes tipos de dados em Java representa números inteiros sem casas decimais?";
-		listaQuestoesRespostas[0][1] = " : Qual é a saída deste código Java?\n int x = 5;\nSystem.out.println(x++);";
-		listaQuestoesRespostas[0][2] = " : Em Java, qual é a palavra-chave utilizada para definir uma classe?";
-		listaQuestoesRespostas[0][3] = " : Qual é a estrutura de controle em Java utilizada para repetir um bloco de código várias vezes?";
-		listaQuestoesRespostas[0][4] = " : O que o seguinte código Java faz?\n String nome = 'João'\nSystem.out.println(nome.length())";
-		listaQuestoesRespostas[0][5] = " : Em Java, qual é a forma correta de declarar um array de inteiros chamado 'numeros' com tamanho 5?";
-		listaQuestoesRespostas[0][6] = " : O que o seguinte código Java faz?\nint resultado = Math.abs(-10);\nSystem.out.println(resultado);";
-		listaQuestoesRespostas[0][7] = " : Qual é a forma correta de escrever um comentário de várias linhas em Java?";
-		listaQuestoesRespostas[0][8] = " : Em Java, como você chama um método de uma classe 'MinhaClasse'?";
-		listaQuestoesRespostas[0][9] = " : Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\nSystem.out.print(numeros[i] + ' ')\n}";
+		String listaQuestoesRespostas[][] = new String[3][10];
+
+		listaQuestoesRespostas[0][0] = "Qual dos seguintes tipos de dados em Java representa números inteiros sem casas decimais?";
+		listaQuestoesRespostas[0][1] = "Qual é a saída deste código Java?\n int x = 5;\nSystem.out.println(x++);";
+		listaQuestoesRespostas[0][2] = "Em Java, qual é a palavra-chave utilizada para definir uma classe?";
+		listaQuestoesRespostas[0][3] = "Qual é a estrutura de controle em Java utilizada para repetir um bloco de código várias vezes?";
+		listaQuestoesRespostas[0][4] = "O que o seguinte código Java faz?\n String nome = 'João'\nSystem.out.println(nome.length())";
+		listaQuestoesRespostas[0][5] = "Em Java, qual é a forma correta de declarar um array de inteiros chamado 'numeros' com tamanho 5?";
+		listaQuestoesRespostas[0][6] = "O que o seguinte código Java faz?\nint resultado = Math.abs(-10);\nSystem.out.println(resultado);";
+		listaQuestoesRespostas[0][7] = "Qual é a forma correta de escrever um comentário de várias linhas em Java?";
+		listaQuestoesRespostas[0][8] = "Em Java, como você chama um método de uma classe 'MinhaClasse'?";
+		listaQuestoesRespostas[0][9] = "Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\nSystem.out.print(numeros[i] + ' ')\n}";
 
 		listaQuestoesRespostas[1][0] =
-		"A) String 4 \n"+
-		"B) float 2 \n" + 
-		"C) double 3 \n" + 
-		"D) int 1 \n" ;
+		"A)  String 4 \n"+
+		"B)  float 2 \n" + 
+		"C)  double 3 \n" + 
+		"D)  int 1 \n" ;
 		listaQuestoesRespostas[1][1] =
         "A)  4 \n" +
 		"B)  5 \n" +
@@ -293,7 +297,7 @@ public class Program {
 		"C)  int numeros[] = new int[5]; \n" + 
 		"D)  int numeros[] = {1, 2, 3, 4, 5}; \n";
 		listaQuestoesRespostas[1][6] =
-		"A)   O código resultará em um erro de compilação \n"+
+		"A)  O código resultará em um erro de compilação \n"+
 		"B)  Calcula a raiz quadrada de -10 \n" + 
 		"C)  Calcula o seno de -10 \n" +
 		"D)  Calcula o valor absoluto de -10 \n";  
@@ -342,17 +346,11 @@ public class Program {
 		}
 			
 		return qtdQuestoes;
-	}
+	}	
 
-	static Float[] listaValoresQuestoes = {1f,1f,1f,1f,1f,1f,1f,1f,1f};
-	
-	static void controleValorQuestoes(int qtdQuestoes) {
+	static float[] controleValorQuestoes(int qtdQuestoes) {
 
-		listaValoresQuestoes = new Float[qtdQuestoes];
-		
-		for (int i = 0; i < listaValoresQuestoes.length; i++) {
-			System.out.println(listaValoresQuestoes[i]);
-		}
+		float listaValoresQuestoes[] = new float[qtdQuestoes];
 
 		Random random = new Random();
 
@@ -375,10 +373,15 @@ public class Program {
 			somaValorQuestoes = controleSomaValores;
 			controleSomaValores = 0;
 		}
+		// resolver o problema deste fOR NÃO FUNCIONAR
+		for (int i = 0; i < listaValoresQuestoes.length; i++) {
+			System.out.println(listaValoresQuestoes[i]);
+		}
 
+		return listaValoresQuestoes;
 	}
 
-	static void AtivaDesativaQuestoesAleatorias() {
+	static String[][] ativaDesativaQuestoesAleatorias() {
 
 		String listaQuestoesOriginal[][] = questoesProva();
 
@@ -401,11 +404,12 @@ public class Program {
 
 		}
 
-		AleatorizarQuestoes(btnAtivo, listaQuestoesOriginal);
+		listaQuestoesOriginal = AleatorizarQuestoes(btnAtivo, listaQuestoesOriginal);
 
+		return listaQuestoesOriginal;
 	}
 
-	static void AleatorizarQuestoes(boolean ativadaDesativada, String listaQuestoesOriginal[][]) {
+	static String[][] AleatorizarQuestoes(boolean ativadaDesativada, String listaQuestoesOriginal[][]) {
 
 		if(ativadaDesativada) {
 
@@ -434,6 +438,7 @@ public class Program {
 
 		}
 		
+		return listaQuestoesOriginal;
 	}
 
 	static int MaxTentativasAluno() {
@@ -446,8 +451,34 @@ public class Program {
 
 	static void organizadorProva(String nomeAluno) {
 
-		int notaMaximaProva = 0;
+		float listaValoresQuestoesParaUso[];
+		String listaQuestoesParaUso[][];
+
+		int notaMaximaProva = 10;
 		int notaAluno = 0;
+
+		// aRRUMAR ESTE PRIMEIRO if
+		if(listaValoresQuestoesRetornada == null) {
+			
+			listaValoresQuestoesParaUso = new float[]{1f,1f,1f,1f,1f,1f,1f,1f,1f,1f};
+			System.out.println("A");
+		}else {
+
+			listaValoresQuestoesParaUso = listaValoresQuestoesRetornada;
+			System.out.println("B");
+		}
+
+		if(listaQuestoesProntas[0][0] == null) {
+		
+			listaQuestoesParaUso = questoesProva();
+		
+		}else {
+
+			listaQuestoesParaUso = listaQuestoesProntas;
+
+		}
+
+		
 
 
 		mostrarProva();
