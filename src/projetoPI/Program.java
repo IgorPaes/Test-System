@@ -563,7 +563,7 @@ public class Program {
 
 			do {
 	
-				System.out.printf("%d) %s\n", coluna + 1, matrizQuestoes[0][coluna]);
+				System.out.printf("%d) %s (%.2f)\n", coluna + 1, matrizQuestoes[0][coluna], vetorValoresQuestoes[coluna]);
 				System.out.println(matrizQuestoes[1][coluna]);
 				System.out.printf("Resposta: ");
 				respostaQuestao = recebeLimpaString().toUpperCase();
@@ -578,7 +578,7 @@ public class Program {
 			
 		}
 
-		qtdErros = matrizQuestoes[0].length - qtdAcertos;
+		qtdErros = qtdQuestoes - qtdAcertos;
 		String textAprovadoReprovado = alunoAprovadoReprovado(notaAlunoFinal, mediaProva);
 
 		System.out.println("\n//////--------------------------------//////");
