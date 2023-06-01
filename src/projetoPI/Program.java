@@ -462,6 +462,8 @@ public class Program {
 
 		}while(numeroMediaProva < 1 || numeroMediaProva > 10);
 
+		System.out.println("Nova média da prova adicionada!");
+
 	}
 
 	static void organizadorProva(String nomeAluno) {
