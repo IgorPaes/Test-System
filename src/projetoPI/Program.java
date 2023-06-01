@@ -343,6 +343,9 @@ public class Program {
 			qtdQuestoes = recebeLimpaInt();
 
 		}
+
+		System.out.println("Quantidade de questões adicionada com sucesso!");
+		System.out.printf("VALOR: %d\n", qtdQuestoes);
 		
 		qtdQuestoesPronta = qtdQuestoes;	
 	}	
@@ -463,6 +466,7 @@ public class Program {
 		}while(numeroMediaProva < 1 || numeroMediaProva > 10);
 
 		System.out.println("Nova média da prova adicionada!");
+		System.out.printf("VALOR: %.2f\n", numeroMediaProva);
 
 	}
 
