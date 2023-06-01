@@ -258,12 +258,12 @@ public class Program {
 		listaQuestoesRespostas[0][1] = "Qual é a saída deste código Java?\nint x = 5;\nSystem.out.println(x++);";
 		listaQuestoesRespostas[0][2] = "Em Java, qual é a palavra-chave utilizada para definir uma classe?";
 		listaQuestoesRespostas[0][3] = "Qual é a estrutura de controle em Java utilizada para repetir um bloco de código várias vezes?";
-		listaQuestoesRespostas[0][4] = "O que o seguinte código Java faz?\nString nome = 'João'\nSystem.out.println(nome.length())\n";
+		listaQuestoesRespostas[0][4] = "O que o seguinte código Java faz?\nString nome = 'João'\nSystem.out.println(nome.length());";
 		listaQuestoesRespostas[0][5] = "Em Java, qual é a forma correta de declarar um array de inteiros chamado 'numeros' com tamanho 5?";
 		listaQuestoesRespostas[0][6] = "O que o seguinte código Java faz?\nint resultado = Math.abs(-10);\nSystem.out.println(resultado);";
 		listaQuestoesRespostas[0][7] = "Qual é a forma correta de escrever um comentário de várias linhas em Java?";
 		listaQuestoesRespostas[0][8] = "Qual é o método utilizado para ler uma entrada do tipo String do teclado em Java?";
-		listaQuestoesRespostas[0][9] = "Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\n System.out.print(numeros[i] + ' ')\n}";
+		listaQuestoesRespostas[0][9] = "Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\n System.out.print(numeros[i] + ' ');}";
 
 		listaQuestoesRespostas[1][0] =
 		"A) String \n"+
@@ -271,7 +271,7 @@ public class Program {
 		"C) double \n" + 
 		"D) int \n" ;
 		listaQuestoesRespostas[1][1] =
-        "A) 4 \n" +
+        "\nA) 4 \n" +
 		"B) 5 \n" +
 		"C) 6 \n" + 
 		"D) O código resultará em um erro de compilação \n";
@@ -296,7 +296,7 @@ public class Program {
 		"C) []int numeros = new int[5]; \n" + 
 		"D) int numeros[] = {1, 2, 3, 4, 5}; \n";
 		listaQuestoesRespostas[1][6] =
-		"A) O código resultará em um erro de compilação \n"+
+		"\nA) O código resultará em um erro de compilação \n"+
 		"B) Calcula a raiz quadrada de -10 \n" + 
 		"C) Calcula o seno de -10 \n" +
 		"D) Calcula o valor absoluto de -10 e imprime na tela o resultado 10 \n";  
@@ -311,7 +311,7 @@ public class Program {
 		"C) getInput(); \n" + 
 		"D) readInput(); \n";
 		listaQuestoesRespostas[1][9] =
-		"A) O código resultará em um erro de compilação \n" + 
+		"\nA) O código resultará em um erro de compilação \n" + 
 		"B) 5 4 3 2 1 \n" + 
 		"C) 1 1 1 1 1 \n" +
 		"D) 1 2 3 4 5 \n";
