@@ -154,6 +154,7 @@ public class Program {
 
 	static float listaValoresQuestoesRetornada[];
 	static String listaQuestoesProntas[][] = new String[3][10];
+	static int qtdQuestoesPronta = 0;
 
 	static void menuProfessor(boolean altResposta, int numeroEscolhido) {	
 
@@ -183,12 +184,13 @@ public class Program {
 			numeroEscolhidoProfessor = numeroEscolhido;
 			
 		}
-
+		
 		int qtdQuestoes = 0;
+		qtdQuestoes = qtdQuestoesPronta;
 
 		switch(numeroEscolhidoProfessor) {
 			case 1:
-				qtdQuestoes = quantidadeQuestoes();
+				quantidadeQuestoes();
 			break;
 
 			case 2:
@@ -260,14 +262,14 @@ public class Program {
 		listaQuestoesRespostas[0][5] = "Em Java, qual é a forma correta de declarar um array de inteiros chamado 'numeros' com tamanho 5?";
 		listaQuestoesRespostas[0][6] = "O que o seguinte código Java faz?\nint resultado = Math.abs(-10);\nSystem.out.println(resultado);";
 		listaQuestoesRespostas[0][7] = "Qual é a forma correta de escrever um comentário de várias linhas em Java?";
-		listaQuestoesRespostas[0][8] = "Em Java, como você chama um método de uma classe 'MinhaClasse'?";
+		listaQuestoesRespostas[0][8] = "Qual é o método utilizado para ler uma entrada do tipo String do teclado em Java?";
 		listaQuestoesRespostas[0][9] = "Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\n System.out.print(numeros[i] + ' ')\n}";
 
 		listaQuestoesRespostas[1][0] =
-		"A) String 4 \n"+
-		"B) float 2 \n" + 
-		"C) double 3 \n" + 
-		"D) int 1 \n" ;
+		"A) String \n"+
+		"B) float \n" + 
+		"C) double \n" + 
+		"D) int \n" ;
 		listaQuestoesRespostas[1][1] =
         "A) 4 \n" +
 		"B) 5 \n" +
@@ -282,7 +284,7 @@ public class Program {
 		"A) if \n" + 
 		"B) switch \n" + 
 		"C) for \n"+
-		"D) while \n"; 
+		"D) else \n"; 
 		listaQuestoesRespostas[1][4] =
 		"A) Imprime o nome 'João' \n" + 
 		"B) Retorna o tamanho do nome 'João' \n" +
@@ -291,23 +293,23 @@ public class Program {
 		listaQuestoesRespostas[1][5] =
 		"A) int[] numeros = new int[5]; \n" +
 		"B) int[] numeros = {1, 2, 3, 4, 5}; \n" + 
-		"C) int numeros[] = new int[5]; \n" + 
+		"C) []int numeros = new int[5]; \n" + 
 		"D) int numeros[] = {1, 2, 3, 4, 5}; \n";
 		listaQuestoesRespostas[1][6] =
 		"A) O código resultará em um erro de compilação \n"+
 		"B) Calcula a raiz quadrada de -10 \n" + 
 		"C) Calcula o seno de -10 \n" +
-		"D) Calcula o valor absoluto de -10 \n";  
+		"D) Calcula o valor absoluto de -10 e imprime na tela o resultado 10 \n";  
 		listaQuestoesRespostas[1][7] =
 		"A) // Este é um comentário \n"   + 
-		"B) /* Este é um comentário / \n" +
+		"B) /* Este é um comentário */ \n" +
 		"C) // Este é um comentário / \n" + 
 		"D) /* Este é um comentário // \n";
 		listaQuestoesRespostas[1][8] =
-		"A) MinhaClasse.metodo(); \n" +								
-		"B) metodo.MinhaClasse(); \n" + 
-		"C) MinhaClasse.metodo; \n" + 
-		"D) metodo.MinhaClasse; \n";
+		"A) nextLine(); \n" +								
+		"B) readLine(); \n" + 
+		"C) getInput(); \n" + 
+		"D) readInput(); \n";
 		listaQuestoesRespostas[1][9] =
 		"A) O código resultará em um erro de compilação \n" + 
 		"B) 5 4 3 2 1 \n" + 
@@ -315,7 +317,7 @@ public class Program {
 		"D) 1 2 3 4 5 \n";
 
 		listaQuestoesRespostas[2][0] = "D";
-		listaQuestoesRespostas[2][1] = "B";
+		listaQuestoesRespostas[2][1] = "C";
 		listaQuestoesRespostas[2][2] = "A";
 		listaQuestoesRespostas[2][3] = "C";
 		listaQuestoesRespostas[2][4] = "B";
@@ -328,7 +330,7 @@ public class Program {
 		return listaQuestoesRespostas;
 	}
 
-	static int quantidadeQuestoes() {
+	static void quantidadeQuestoes() {
 
 		int qtdQuestoes = 0;
 
@@ -341,28 +343,28 @@ public class Program {
 			qtdQuestoes = recebeLimpaInt();
 
 		}
-			
-		return qtdQuestoes;
+		
+		qtdQuestoesPronta = qtdQuestoes;	
 	}	
 
 	static float[] controleValorQuestoes(int qtdQuestoes) {
 
 		float listaValoresQuestoes[] = new float[qtdQuestoes];
-		float listaValoresPossiveis[] = {0.25f,0.50f,0.75f,1.0f,1.25f,1.50f,1.75f,2.0f};
+		float listaValoresPossiveis[] = {0.25f,0.50f,0.75f,1.0f,1.25f,1.50f,1.75f,2.0f,2.50f,3.0f,3.50f,5.0f,10.0f};
 
 		Random random = new Random();
 
-		byte valorMaxProva = 10;
-		byte somaValorQuestoes = 0;
+		float valorMaxProva = 10;
+		float somaValorQuestoes = 0;
 
-		while(valorMaxProva != somaValorQuestoes) {
+		while(somaValorQuestoes != valorMaxProva) {
 			
-			byte controleSomaValores = 0;
-
+			float controleSomaValores = 0;
+					
 			for(int i = 0; i < qtdQuestoes; i++) {
 
 				int posicaoValor = random.nextInt(listaValoresPossiveis.length);
-				
+
 				listaValoresQuestoes[i] = listaValoresPossiveis[posicaoValor];
 				controleSomaValores += listaValoresQuestoes[i];
 
@@ -416,6 +418,7 @@ public class Program {
 		if(ativadaDesativada) {
 
 			Random random = new Random();
+
 			int posicaoAtual = listaQuestoesOriginal.length - 1;
 
 			while(posicaoAtual > -1) {
@@ -461,6 +464,7 @@ public class Program {
 		String listaQuestoesParaUso[][];
 		float listaValoresQuestoesParaUso[];
 		double mediaProva;
+		int qtdQuestoes;
 		
 		if(listaQuestoesProntas[0][0] == null) {
 			
@@ -492,7 +496,17 @@ public class Program {
 
 		}
 
-		mostrarProva(nomeAluno, listaQuestoesParaUso, listaValoresQuestoesParaUso, mediaProva);
+		if(qtdQuestoesPronta == 0) {
+
+			qtdQuestoes = 10;
+		
+		}else {
+
+			qtdQuestoes = qtdQuestoesPronta;
+
+		}
+
+		mostrarProva(nomeAluno, listaQuestoesParaUso, listaValoresQuestoesParaUso, mediaProva, qtdQuestoes);
 	}
 
 	static void menuInicialProva(String nomeAluno) {
@@ -515,19 +529,19 @@ public class Program {
 			break;
 		
 			case 2:
-				System.out.println("-----------------------------------------------------");
+				System.out.println("-------------------------------------------------------------------");
 				System.out.println("ANIMAL! ERA MEME, NÃO QUER FAZER A PROVA ENTÃO RECEBA ESSA DP AI!");
-				System.out.println("-----------------------------------------------------");
+				System.out.println("-------------------------------------------------------------------");
 			break;
 
 		}
 
 	}
 
-	static void mostrarProva(String nomeAluno, String matrizQuestoes[][], float vetorValoresQuestoes[], double mediaProva) {
+	static void mostrarProva(String nomeAluno, String matrizQuestoes[][], float vetorValoresQuestoes[], double mediaProva, int qtdQuestoes) {
 
 		System.out.println("-----------------------------------------------------");
-		System.out.println("RECEBA ESSA PROVA COM QUESTÕES GENÊNICAS SOBRE JAVA.");
+		System.out.println("RECEBA ESSA PROVA COM QUESTÕES GENÉRICAS SOBRE JAVA.");
 		System.out.println("----------------------- REGAS -----------------------");
 		System.out.printf("1 - %s É A PRIMEIRA REGRA DO CLUBE DA LUTA;\n", nomeAluno);
 		System.out.printf("2 - %s NÃO PODE COLAR, ANIMAL!;\n", nomeAluno);
@@ -540,16 +554,16 @@ public class Program {
 		float notaAlunoFinal = 0f;
 		int qtdAcertos = 0;
 		int qtdErros = 0;
-		String questoesVouF[] = new String[matrizQuestoes[0].length];
+		String questoesVouF[] = new String[qtdQuestoes];
 		
-		for(int coluna = 0; coluna < matrizQuestoes[0].length; coluna++) {
+		for(int coluna = 0; coluna < qtdQuestoes; coluna++) {
 			
 			String respostaQuestao;
 			boolean respostaVouF;
 
 			do {
-				
-				System.out.println(matrizQuestoes[0][coluna]);
+	
+				System.out.printf("%d) %s\n", coluna + 1, matrizQuestoes[0][coluna]);
 				System.out.println(matrizQuestoes[1][coluna]);
 				System.out.printf("Resposta: ");
 				respostaQuestao = recebeLimpaString().toUpperCase();
