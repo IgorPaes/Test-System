@@ -258,7 +258,7 @@ public class Program {
 		listaQuestoesRespostas[0][1] = "Qual é a saída deste código Java?\nint x = 5;\nSystem.out.println(x++);";
 		listaQuestoesRespostas[0][2] = "Em Java, qual é a palavra-chave utilizada para definir uma classe?";
 		listaQuestoesRespostas[0][3] = "Qual é a estrutura de controle em Java utilizada para repetir um bloco de código várias vezes?";
-		listaQuestoesRespostas[0][4] = "O que o seguinte código Java faz?\nString nome = 'João'\nSystem.out.println(nome.length())";
+		listaQuestoesRespostas[0][4] = "O que o seguinte código Java faz?\nString nome = 'João'\nSystem.out.println(nome.length())\n";
 		listaQuestoesRespostas[0][5] = "Em Java, qual é a forma correta de declarar um array de inteiros chamado 'numeros' com tamanho 5?";
 		listaQuestoesRespostas[0][6] = "O que o seguinte código Java faz?\nint resultado = Math.abs(-10);\nSystem.out.println(resultado);";
 		listaQuestoesRespostas[0][7] = "Qual é a forma correta de escrever um comentário de várias linhas em Java?";
@@ -404,7 +404,12 @@ public class Program {
 
 		if(numeroEscolhido == 1) {
 			
+			System.out.println("Modo de questões aleatórias ativado!");
 			btnAtivo = true;
+
+		}else {
+
+			System.out.println("Modo de questões aleatórias desativado!");
 
 		}
 
