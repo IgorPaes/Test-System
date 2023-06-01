@@ -286,7 +286,7 @@ public class Program {
 		"C) for \n"+
 		"D) else \n"; 
 		listaQuestoesRespostas[1][4] =
-		"A) Imprime o nome 'João' \n" + 
+		"\nA) Imprime o nome 'João' \n" + 
 		"B) Retorna o tamanho do nome 'João' \n" +
 		"C) Retorna a posição da letra 'o' no nome 'João' \n" + 
 		"D) O código resultará em um erro de compilação \n";
