@@ -169,7 +169,7 @@ public class Program {
 				System.out.println("1) QUANTIDADE DE QUESTÕES");
 				System.out.println("2) GERAR OS VALORES DAS QUESTÕES");
 				System.out.println("3) MODO DE QUESTÕES ALEATÓRIAS");
-				System.out.println("4) NÚMERO DE TENTATIVAS");
+				System.out.println("4) MÉDIA DA PROVA");
 				System.out.println("+-----------------------------------------------+");
 				System.out.println("0) SALVAR E VOLTAR");
 				System.out.println("+-----------------------------------------------+");
@@ -204,7 +204,7 @@ public class Program {
 			break;
 
 			case 4:
-				maxTentativasAluno();
+				mediaProva();
 			break;
 
 			case 0:
@@ -247,68 +247,67 @@ public class Program {
 		}
 
 	}
-
 	
 	static String[][] questoesProva() {
 		
 		String listaQuestoesRespostas[][] = new String[3][10];
 
 		listaQuestoesRespostas[0][0] = "Qual dos seguintes tipos de dados em Java representa números inteiros sem casas decimais?";
-		listaQuestoesRespostas[0][1] = "Qual é a saída deste código Java?\n int x = 5;\nSystem.out.println(x++);";
+		listaQuestoesRespostas[0][1] = "Qual é a saída deste código Java?\nint x = 5;\nSystem.out.println(x++);";
 		listaQuestoesRespostas[0][2] = "Em Java, qual é a palavra-chave utilizada para definir uma classe?";
 		listaQuestoesRespostas[0][3] = "Qual é a estrutura de controle em Java utilizada para repetir um bloco de código várias vezes?";
-		listaQuestoesRespostas[0][4] = "O que o seguinte código Java faz?\n String nome = 'João'\nSystem.out.println(nome.length())";
+		listaQuestoesRespostas[0][4] = "O que o seguinte código Java faz?\nString nome = 'João'\nSystem.out.println(nome.length())";
 		listaQuestoesRespostas[0][5] = "Em Java, qual é a forma correta de declarar um array de inteiros chamado 'numeros' com tamanho 5?";
 		listaQuestoesRespostas[0][6] = "O que o seguinte código Java faz?\nint resultado = Math.abs(-10);\nSystem.out.println(resultado);";
 		listaQuestoesRespostas[0][7] = "Qual é a forma correta de escrever um comentário de várias linhas em Java?";
 		listaQuestoesRespostas[0][8] = "Em Java, como você chama um método de uma classe 'MinhaClasse'?";
-		listaQuestoesRespostas[0][9] = "Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\nSystem.out.print(numeros[i] + ' ')\n}";
+		listaQuestoesRespostas[0][9] = "Qual é a saída deste código Java? int[] numeros = {1, 2, 3, 4, 5}\nfor (int i = 0; i < numeros.length; i++) {\n System.out.print(numeros[i] + ' ')\n}";
 
 		listaQuestoesRespostas[1][0] =
-		"A)  String 4 \n"+
-		"B)  float 2 \n" + 
-		"C)  double 3 \n" + 
-		"D)  int 1 \n" ;
+		"A) String 4 \n"+
+		"B) float 2 \n" + 
+		"C) double 3 \n" + 
+		"D) int 1 \n" ;
 		listaQuestoesRespostas[1][1] =
-        "A)  4 \n" +
-		"B)  5 \n" +
-		"C)  6 \n" + 
-		"D)  O código resultará em um erro de compilação \n";
+        "A) 4 \n" +
+		"B) 5 \n" +
+		"C) 6 \n" + 
+		"D) O código resultará em um erro de compilação \n";
 		listaQuestoesRespostas[1][2] = 
-		"A)  class \n" +
-		"B)  public \n" + 
-		"C)  static \n" + 
-		"D)  void \n";
+		"A) class \n" +
+		"B) public \n" + 
+		"C) static \n" + 
+		"D) void \n";
 		listaQuestoesRespostas[1][3] =
-		"A)  if \n" + 
-		"B)  switch \n" + 
-		"C)  for \n"+
-		"D)  while \n"; 
+		"A) if \n" + 
+		"B) switch \n" + 
+		"C) for \n"+
+		"D) while \n"; 
 		listaQuestoesRespostas[1][4] =
-		"A)  Imprime o nome 'João' \n" + 
-		"B)  Retorna o tamanho do nome 'João' \n" +
-		"C)  Retorna a posição da letra 'o' no nome 'João' \n" + 
-		"D)  O código resultará em um erro de compilação \n";
+		"A) Imprime o nome 'João' \n" + 
+		"B) Retorna o tamanho do nome 'João' \n" +
+		"C) Retorna a posição da letra 'o' no nome 'João' \n" + 
+		"D) O código resultará em um erro de compilação \n";
 		listaQuestoesRespostas[1][5] =
-		"A)  int[] numeros = new int[5]; \n" +
-		"B)  int[] numeros = {1, 2, 3, 4, 5}; \n" + 
-		"C)  int numeros[] = new int[5]; \n" + 
-		"D)  int numeros[] = {1, 2, 3, 4, 5}; \n";
+		"A) int[] numeros = new int[5]; \n" +
+		"B) int[] numeros = {1, 2, 3, 4, 5}; \n" + 
+		"C) int numeros[] = new int[5]; \n" + 
+		"D) int numeros[] = {1, 2, 3, 4, 5}; \n";
 		listaQuestoesRespostas[1][6] =
-		"A)  O código resultará em um erro de compilação \n"+
-		"B)  Calcula a raiz quadrada de -10 \n" + 
-		"C)  Calcula o seno de -10 \n" +
-		"D)  Calcula o valor absoluto de -10 \n";  
+		"A) O código resultará em um erro de compilação \n"+
+		"B) Calcula a raiz quadrada de -10 \n" + 
+		"C) Calcula o seno de -10 \n" +
+		"D) Calcula o valor absoluto de -10 \n";  
 		listaQuestoesRespostas[1][7] =
-		"A)  // Este é um comentário \n"   + 
-		"B)  /* Este é um comentário / \n" +
-		"C)  // Este é um comentário / \n" + 
-		"D)  /* Este é um comentário // \n";
+		"A) // Este é um comentário \n"   + 
+		"B) /* Este é um comentário / \n" +
+		"C) // Este é um comentário / \n" + 
+		"D) /* Este é um comentário // \n";
 		listaQuestoesRespostas[1][8] =
-		"A)  MinhaClasse.metodo(); \n" +								
-		"B)  metodo.MinhaClasse(); \n" + 
-		"C)  MinhaClasse.metodo; \n" + 
-		"D)  metodo.MinhaClasse; \n";
+		"A) MinhaClasse.metodo(); \n" +								
+		"B) metodo.MinhaClasse(); \n" + 
+		"C) MinhaClasse.metodo; \n" + 
+		"D) metodo.MinhaClasse; \n";
 		listaQuestoesRespostas[1][9] =
 		"A) O código resultará em um erro de compilação \n" + 
 		"B) 5 4 3 2 1 \n" + 
@@ -444,18 +443,24 @@ public class Program {
 		return listaQuestoesOriginal;
 	}
 
-	static int maxTentativasAluno() {
+	static double numeroMediaProva = 0;
 
-		System.out.println("Digite o maximo de tentativas do aluno:");
-	    int maxTentativas = recebeLimpaInt();
+	static void mediaProva() {
 
-		return maxTentativas;  
+		do {
+
+			System.out.println("Digite a nota mínima que o aluno deve alcançar na prova: ");
+			numeroMediaProva = recebeLimpaDouble();
+
+		}while(numeroMediaProva < 1 || numeroMediaProva > 10);
+
 	}
 
 	static void organizadorProva(String nomeAluno) {
 
 		String listaQuestoesParaUso[][];
 		float listaValoresQuestoesParaUso[];
+		double mediaProva;
 		
 		if(listaQuestoesProntas[0][0] == null) {
 			
@@ -477,38 +482,49 @@ public class Program {
 		
 		}
 
-		mostrarProva(nomeAluno, listaQuestoesParaUso, listaValoresQuestoesParaUso);
+		if(numeroMediaProva == 0) {
+
+			mediaProva = 6;
+
+		}else {
+
+			mediaProva = numeroMediaProva;
+
+		}
+
+		mostrarProva(nomeAluno, listaQuestoesParaUso, listaValoresQuestoesParaUso, mediaProva);
 	}
 
 	static void menuInicialProva(String nomeAluno) {
 
-		// int escolhaMenu;
+		int escolhaMenu;
 
-		// do {
+		do {
 
-		// 	System.out.printf("(%s) Digite 1 para iniciar ou 0 para queimar a prova:\n", nomeAluno);
-		// 	System.out.println("1) INICIAR");
-		// 	System.out.println("2) QUEIMAR");
-		// 	escolhaMenu = recebeLimpaInt();
+			System.out.printf("(%s) Digite 1 para iniciar ou 0 para queimar a prova:\n", nomeAluno);
+			System.out.println("1) INICIAR");
+			System.out.println("2) QUEIMAR");
+			escolhaMenu = recebeLimpaInt();
 
-		// }while(escolhaMenu <= 0 || escolhaMenu > 2);
+		}while(escolhaMenu <= 0 || escolhaMenu > 2);
 
-		// switch(escolhaMenu) {
+		switch(escolhaMenu) {
 
-		// 	case 1:
-		// 		organizadorProva(nomeAluno);
-		// 	break;
+			case 1:
+				organizadorProva(nomeAluno);
+			break;
 		
-		// 	case 2:
-		// 		System.out.println("ANIMAL! ERA MEME, NÃO QUER FAZER A PROVA ENTÃO RECEBA ESSA DP AI!");
-		// 	break;
+			case 2:
+				System.out.println("-----------------------------------------------------");
+				System.out.println("ANIMAL! ERA MEME, NÃO QUER FAZER A PROVA ENTÃO RECEBA ESSA DP AI!");
+				System.out.println("-----------------------------------------------------");
+			break;
 
-		// }
-		organizadorProva(nomeAluno);
+		}
 
 	}
 
-	static void mostrarProva(String nomeAluno, String matrizQuestoes[][], float vetorValoresQuestoes[]) {
+	static void mostrarProva(String nomeAluno, String matrizQuestoes[][], float vetorValoresQuestoes[], double mediaProva) {
 
 		System.out.println("-----------------------------------------------------");
 		System.out.println("RECEBA ESSA PROVA COM QUESTÕES GENÊNICAS SOBRE JAVA.");
@@ -519,25 +535,55 @@ public class Program {
 		System.out.printf("4 - %s ESSA AQUI É SÓ PARA PARECER QUE TEM MAIS REGRAS!\n", nomeAluno);
 		System.out.printf("5 - %s E ESSA É SÓ PARA VOCÊ LER MESMO!\n", nomeAluno);
 		System.out.println("-----------------------------------------------------\n");
+		System.out.printf("A média a ser alcançada é de: %.1f pontos.\n\n", mediaProva);
 
-		int qtdAcertos;
-
+		float notaAlunoFinal = 0f;
+		int qtdAcertos = 0;
+		int qtdErros = 0;
+		String questoesVouF[] = new String[matrizQuestoes[0].length];
+		
 		for(int coluna = 0; coluna < matrizQuestoes[0].length; coluna++) {
 			
 			String respostaQuestao;
+			boolean respostaVouF;
 
-			System.out.println(matrizQuestoes[0][coluna]);
-			System.out.println(matrizQuestoes[1][coluna]);
-			System.out.printf("Resposta: ");
-			respostaQuestao = recebeLimpaString().toUpperCase();
+			do {
+				
+				System.out.println(matrizQuestoes[0][coluna]);
+				System.out.println(matrizQuestoes[1][coluna]);
+				System.out.printf("Resposta: ");
+				respostaQuestao = recebeLimpaString().toUpperCase();
+				
+			}while(!respostaQuestao.equals("A") && !respostaQuestao.equals("B") && !respostaQuestao.equals("C") && !respostaQuestao.equals("D"));
 			
-			qtdAcertos = checarRespostaMostrar(respostaQuestao, matrizQuestoes, coluna, vetorValoresQuestoes);
+			respostaVouF = checarRespostaMostrar(respostaQuestao, matrizQuestoes, coluna);
+			notaAlunoFinal += calcularNotaAluno(respostaVouF, coluna, vetorValoresQuestoes);
+			qtdAcertos += qtdDeAcertos(respostaVouF);
+			
+			questoesVouF[coluna] = questoesCertas(respostaVouF);
+			
+		}
+
+		qtdErros = matrizQuestoes[0].length - qtdAcertos;
+		String textAprovadoReprovado = alunoAprovadoReprovado(notaAlunoFinal, mediaProva);
+
+		System.out.println("\n//////--------------------------------//////");
+		for(int i = 0; i < questoesVouF.length; i++) {
+			
+			System.out.printf("%d) %s \n", i + 1, questoesVouF[i]);
 
 		}
-		System.out.print("\033\143");
-		// FAZER COM QUE SE O CARA ACERTOU, A MESMA POSIÇÃO QUE O FOR DA PERGUNTA QUE ELE ACERTOU
-		// SEJÁ ENTREGUE A OUTRO FOR PARA PEGAR O VALOR DA NOTA DO CARA
+		System.out.println("//////--------------------------------//////\n");
 
+		System.out.println("***--------------------------------***");
+		System.out.printf("Você acertou %d questões. \n", qtdAcertos);
+		System.out.printf("Você errou %d questões. \n", qtdErros);
+		System.out.println("***--------------------------------***\n");
+
+		System.out.println("***--------------------------------***");
+		System.out.printf("Sua nota foi de: %.2f \n", notaAlunoFinal);
+		System.out.printf("Você foi: %s! \n", textAprovadoReprovado);
+		System.out.println("***--------------------------------***\n");
 
 	}
 
@@ -548,46 +594,92 @@ public class Program {
 			System.out.println("-----------------------");
 			System.out.printf("RESPOSTA DA QUESTÃO %d\n", numbQuestao + 1);
 			System.out.println("***    CORRETA!    ***");
-			System.out.println("-----------------------");
+			System.out.println("-----------------------\n");
 		
 		}else {
 
 			System.out.println("----------------------");
 			System.out.printf("RESPOSTA DA QUESTÃO %d\n", numbQuestao + 1);
 			System.err.println("***    ERRADA!    ***");
-			System.out.println("----------------------");
+			System.out.println("----------------------\n");
 
 		}
 
 	}
 
-	static int checarRespostaMostrar(String respostaQuestao, String matrizQuestoes[][], int coluna, float vetorValoresQuestoes[]) {
+	static boolean checarRespostaMostrar(String respostaQuestao, String matrizQuestoes[][], int coluna) {
 
 		boolean acertouErrou = false;
-		int qtdAcertos = 0;
 
 		if(respostaQuestao.equals(matrizQuestoes[2][coluna])) {
 			
-			calcularNotaAluno(coluna, vetorValoresQuestoes);
 			acertouErrou = true;
-			qtdAcertos++;
 
 		}
 
 		acertouErrou(acertouErrou, coluna);
-		return qtdAcertos;
+
+		return acertouErrou;
 	}
 
-	static float calcularNotaAluno(int coluna, float vetorValoresQuestoes[]) {
+	static float calcularNotaAluno(boolean respostaVouF, int coluna, float vetorValoresQuestoes[]) {
 
-		float notaAluno = 0;
+		float notaRecebidaQuestao = 0f;
 
-		float notaRecebidaQuestao = vetorValoresQuestoes[coluna];
-		notaAluno += notaRecebidaQuestao;
+		if(respostaVouF) {
 
-		// ARRUMAR AQUI NÃO SE ESTÁ PRONTO
+			notaRecebidaQuestao = vetorValoresQuestoes[coluna];
 
-		return notaAluno;
+		}
+
+		return notaRecebidaQuestao;
+	}
+
+	static int qtdDeAcertos(boolean respostaVouF) {
+
+		int qtdCorreta = 0;
+
+		if(respostaVouF) {
+			
+			qtdCorreta++;
+			
+		}
+
+		return qtdCorreta;
+	}
+
+	static String questoesCertas(boolean respostaVouF) {
+
+		String textVouF;
+
+		if(respostaVouF) {
+			
+			textVouF = "ACERTOU";
+			
+		}else {
+
+			textVouF = "ERROU";
+			
+		}
+
+		return textVouF;
+	}
+
+	static String alunoAprovadoReprovado(float notaAlunoFinal, double mediaProva) {
+
+		String textAprovadoReprovado;
+
+		if(notaAlunoFinal >= mediaProva) {
+			
+			textAprovadoReprovado = "APROVADO";
+			
+		}else {
+
+			textAprovadoReprovado = "REPROVADO";
+			
+		}
+
+		return textAprovadoReprovado;
 	}
 
 	static void menuInicial() {
