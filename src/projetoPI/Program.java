@@ -101,8 +101,8 @@ public class Program {
 	
 		String nomeUsuario[] = {"Pedro", "Julio", "Erike", "Guilherme", "Igor", "Vitor", "Victor"};
 
-		System.out.println("Lista de nomes: " + Arrays.toString(nomeUsuario) + "\n");
-		System.out.printf("Digite o seu nome: ");
+		System.out.println("Lista de usuários: " + Arrays.toString(nomeUsuario) + "\n");
+		System.out.printf("Digite o seu usuário: ");
 		String nomeAluno = recebeLimpaString().toUpperCase();
 
 		int maxTentativasSenha = 3;
@@ -540,9 +540,9 @@ public class Program {
 			break;
 		
 			case 2:
-				System.out.println("-------------------------------------------------------------------");
-				System.out.println("ANIMAL! ERA MEME, NÃO QUER FAZER A PROVA ENTÃO RECEBA ESSA DP AI!");
-				System.out.println("-------------------------------------------------------------------");
+				System.out.println("-------------------------------------------------------------------------");
+				System.out.println("NÃO ENTENDI A SUA ESCOLHA, COMO EU PODERIA QUEIMAR ALGO QUE NÃO É FÍSICO?");
+				System.out.println("-------------------------------------------------------------------------");
 			break;
 
 		}
@@ -554,11 +554,11 @@ public class Program {
 		System.out.println("-----------------------------------------------------");
 		System.out.println("RECEBA ESSA PROVA COM QUESTÕES GENÉRICAS SOBRE JAVA.");
 		System.out.println("----------------------- REGAS -----------------------");
-		System.out.printf("1 - %s É A PRIMEIRA REGRA DO CLUBE DA LUTA;\n", nomeAluno);
-		System.out.printf("2 - %s NÃO PODE COLAR, ANIMAL!;\n", nomeAluno);
-		System.out.printf("3 - %s IGNORAR TODA ESTA ABA DE REGRAS;\n", nomeAluno);
-		System.out.printf("4 - %s ESSA AQUI É SÓ PARA PARECER QUE TEM MAIS REGRAS!\n", nomeAluno);
-		System.out.printf("5 - %s E ESSA É SÓ PARA VOCÊ LER MESMO!\n", nomeAluno);
+		System.out.printf("1 - %s É OBRIGATÓRIO ENTENDER A PRIMEIRA REGRA DO CLUBE DA LUTA;\n", nomeAluno);
+		System.out.printf("2 - %s É PROIBIDO TREINAR UMA IA PARA RESPONDER AS QUESTÕES;\n", nomeAluno);
+		System.out.printf("3 - %s É TERMINANTEMENTE PROIBIDO FAZER A PROVA SEM CONSULTA;\n", nomeAluno);
+		System.out.printf("4 - %s NÃO É PERMITIDO ESTAR SENTADO DURANTE A PROVA;\n", nomeAluno);
+		System.out.printf("5 - %s É IMPRESCINDÍVEL QUE IGNORE TODAS A REGAS DESCRITAS A CIMA!\n", nomeAluno);
 		System.out.println("-----------------------------------------------------\n");
 		System.out.printf("A média a ser alcançada é de: %.1f pontos.\n\n", mediaProva);
 
